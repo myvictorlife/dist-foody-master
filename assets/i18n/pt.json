@@ -6,5 +6,6 @@
     "categories":"Categorias",
     "profile":"Perfil",
     "logout":"Sair",
-    "language": "Linguagem"
+    "language": "Linguagem",
+    "form.payment":"Formas de Pagamento"
 }
