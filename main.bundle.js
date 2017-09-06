@@ -906,7 +906,7 @@ var DashboardService = (function () {
         var send = {
             start: start,
             end: end,
-            status: 'AGUARDANDO APROVACAO'
+            status: '4'
         };
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/master/dashboard", send)
             .map(function (res) {
