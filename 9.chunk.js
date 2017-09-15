@@ -105,7 +105,7 @@ var CategoryComponent = (function () {
     CategoryComponent.prototype.ngOnInit = function () {
         this.formulario = this.formBuilder.group({
             id: [null, []],
-            name: [null, [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* Validators */].minLength(3)]],
+            name: [null, [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* Validators */].required]],
         });
     };
     CategoryComponent.prototype.verificaValidTouched = function (campo) {
@@ -141,6 +141,7 @@ var CategoryComponent = (function () {
                     if (result.status) {
                         _this.categories = _this.categoryService.getAll();
                         _this.toastr.success(result.message, '');
+                        _this.formulario.reset();
                     }
                     else {
                         _this.toastr.warning('', result.message);
@@ -153,6 +154,7 @@ var CategoryComponent = (function () {
                     if (result.status) {
                         _this.categories = _this.categoryService.getAll();
                         _this.toastr.success(result.message, '');
+                        _this.formulario.reset();
                     }
                     else {
                         _this.toastr.warning('', result.message);
