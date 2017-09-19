@@ -386,7 +386,7 @@ DashboardModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["e" /* NgbAlertModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_3__dashboard_routing_module__["a" /* DashboardRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_6__shared__["c" /* StatModule */],
-            __WEBPACK_IMPORTED_MODULE_7_ngx_mydatepicker__["NgxMyDatePickerModule"],
+            __WEBPACK_IMPORTED_MODULE_7_ngx_mydatepicker__["NgxMyDatePickerModule"].forRoot(),
             __WEBPACK_IMPORTED_MODULE_8__angular_forms__["b" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_8__angular_forms__["a" /* ReactiveFormsModule */],
         ],

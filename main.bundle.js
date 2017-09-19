@@ -869,7 +869,7 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
 let CONFIG = {
-    url: "https://uaifomemaster.com"
+    url: "https://subdominio.uaifoody.info"
     //url: "http://localhost:4000"
 }  
 
@@ -986,6 +986,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -999,11 +1000,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PaymentService = (function () {
     function PaymentService(http) {
         var _this = this;
         this.http = http;
-        this.url = 'https://uaifomemaster.com';
+        this.url = __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url;
         this.payments = [];
         this.populate().subscribe(function (result) {
             _this.payments = result.data;
