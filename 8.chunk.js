@@ -26,6 +26,7 @@ var routes = [
             { path: 'category', loadChildren: './category/category.module#CategoryModule' },
             { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
             { path: 'payment', loadChildren: './payment/payment.module#PaymentModule' },
+            { path: 'geral', loadChildren: './geral/geral.module#GeralModule' },
         ]
     }
 ];

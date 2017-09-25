@@ -387,7 +387,7 @@ RestaurantModule = __decorate([
  */
 var MULTISELECT_VALUE_ACCESSOR = {
     provide: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* NG_VALUE_ACCESSOR */],
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* forwardRef */])(function () { return MultiselectDropdown; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_12" /* forwardRef */])(function () { return MultiselectDropdown; }),
     multi: true
 };
 var MultiselectDropdown = (function () {
