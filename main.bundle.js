@@ -960,8 +960,8 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
 let CONFIG = {
-    //url: "https://subdominio.uaifoody.info"
-    url: "http://localhost:4000"
+    url: "https://subdominio.uaifoody.info"
+    //url: "http://localhost:4000"
 }  
 
 /***/ }),
