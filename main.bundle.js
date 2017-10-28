@@ -203,6 +203,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__ = __webpack_require__("../../../../../src/app/shared/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__ = __webpack_require__("../../../../../src/app/shared/services/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__ = __webpack_require__("../../../../../src/app/shared/services/app-version.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__ = __webpack_require__("../../../../../src/app/shared/services/upload.service.ts");
 /* unused harmony export HttpLoaderFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -223,6 +224,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // AoT requires an exported function for factories
 // Services
+
 
 
 
@@ -262,7 +264,7 @@ AppModule = __decorate([
             })
         ],
         exports: [],
-        providers: [__WEBPACK_IMPORTED_MODULE_9__shared__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_10__shared_services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_11__shared_services_dashboard_service__["a" /* DashboardService */], __WEBPACK_IMPORTED_MODULE_12__shared_services_restaurant_service__["a" /* RestaurantService */], __WEBPACK_IMPORTED_MODULE_13__shared_services_category_service__["a" /* CategoryService */], __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__["a" /* AppVersionService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_9__shared__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_10__shared_services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_11__shared_services_dashboard_service__["a" /* DashboardService */], __WEBPACK_IMPORTED_MODULE_12__shared_services_restaurant_service__["a" /* RestaurantService */], __WEBPACK_IMPORTED_MODULE_13__shared_services_category_service__["a" /* CategoryService */], __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__["a" /* AppVersionService */], __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__["a" /* UploadService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -274,7 +276,7 @@ AppModule = __decorate([
 /***/ "../../../../../src/app/shared/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"pos-f-t fixed-top header\">\n    <nav class=\"navbar navbar-inverse bg-inverse navbar-toggleable-md\">\n        <button class=\"navbar-toggler navbar-toggler-right\" (click)=\"toggleSidebar()\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"javascript:void(0)\">UaiFoody</a>\n        <div class=\"collapse navbar-collapse\">\n            \n            <ul class=\"navbar-nav ml-auto mt-2 mt-md-0\">\n                \n                <li class=\"nav-item dropdown\" ngbDropdown>\n                    <!-- <a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>\n                        <i class=\"fa fa-language\"></i> {{ 'language' | translate }} <b class=\"caret\"></b>\n                    </a> -->\n                    <div class=\"dropdown-menu dropdown-menu-right\">\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('en')\">English</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('fr')\">French</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('ur')\">Urdu</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('es')\">Spanish</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('pt')\">Portugues</a>\n                    </div>\n                </li>\n                <li class=\"nav-item dropdown\" ngbDropdown>\n                    <a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>\n                        <i class=\"fa fa-user\"></i> {{profile.name}} <b class=\"caret\"></b>\n                    </a>\n                    <div class=\"dropdown-menu dropdown-menu-right\">\n                        <a class=\"dropdown-item\" [routerLink]=\"['/profile']\"><i class=\"fa fa-fw fa-user\"></i> {{ 'profile' | translate }}</a>\n                        <a class=\"dropdown-item\" [routerLink]=\"['/login']\" (click)=\"onLoggedout()\"><i class=\"fa fa-fw fa-power-off\"></i> {{ 'logout' | translate }}</a>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n"
+module.exports = "<div class=\"pos-f-t fixed-top header\">\n    <nav class=\"navbar navbar-inverse bg-inverse navbar-toggleable-md\">\n        <button class=\"navbar-toggler navbar-toggler-right\" (click)=\"toggleSidebar()\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"javascript:void(0)\">Sacia Fome</a>\n        <div class=\"collapse navbar-collapse\">\n            \n            <ul class=\"navbar-nav ml-auto mt-2 mt-md-0\">\n                \n                <li class=\"nav-item dropdown\" ngbDropdown>\n                    <!-- <a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>\n                        <i class=\"fa fa-language\"></i> {{ 'language' | translate }} <b class=\"caret\"></b>\n                    </a> -->\n                    <div class=\"dropdown-menu dropdown-menu-right\">\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('en')\">English</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('fr')\">French</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('ur')\">Urdu</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('es')\">Spanish</a>\n                        <a class=\"dropdown-item\" href=\"javascript:void(0)\" (click)=\"changeLang('pt')\">Portugues</a>\n                    </div>\n                </li>\n                <li class=\"nav-item dropdown\" ngbDropdown>\n                    <a href=\"javascript:void(0)\" class=\"nav-link\" ngbDropdownToggle>\n                        <i class=\"fa fa-user\"></i> {{profile.name}} <b class=\"caret\"></b>\n                    </a>\n                    <div class=\"dropdown-menu dropdown-menu-right\">\n                        <a class=\"dropdown-item\" [routerLink]=\"['/profile']\"><i class=\"fa fa-fw fa-user\"></i> {{ 'profile' | translate }}</a>\n                        <a class=\"dropdown-item\" [routerLink]=\"['/login']\" (click)=\"onLoggedout()\"><i class=\"fa fa-fw fa-power-off\"></i> {{ 'logout' | translate }}</a>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </nav>\n</div>\n"
 
 /***/ }),
 
@@ -795,7 +797,8 @@ SharedPipesModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppVersionService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -810,12 +813,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppVersionService = (function () {
-    function AppVersionService(http) {
+    function AppVersionService(http, loginService) {
         var _this = this;
         this.http = http;
+        this.loginService = loginService;
         //url: string = 'https://uaifomemaster.com';
-        this.url = __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url;
+        this.url = __WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url;
         this.appVersions = [];
         this.populate().subscribe(function (result) {
             if (result.status) {
@@ -835,6 +840,7 @@ var AppVersionService = (function () {
     };
     AppVersionService.prototype.register = function (appversion) {
         var _this = this;
+        appversion.createdBy = this.loginService.getUser().email;
         return this.http.post(this.url + "/app-version", appversion)
             .map(function (res) {
             var result = res.json();
@@ -852,10 +858,10 @@ var AppVersionService = (function () {
 }());
 AppVersionService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], AppVersionService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=app-version.service.js.map
 
 /***/ }),
@@ -868,7 +874,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -883,14 +890,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CategoryService = (function () {
-    function CategoryService(http) {
+    function CategoryService(http, loginService) {
         this.http = http;
+        this.loginService = loginService;
         this.categories = [];
     }
     CategoryService.prototype.getCategory = function () {
         var _this = this;
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/categories")
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories")
             .map(function (res) {
             _this.categories = res.json().data;
             return res.json();
@@ -902,7 +911,8 @@ var CategoryService = (function () {
     };
     CategoryService.prototype.register = function (category) {
         var _this = this;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/categories", category)
+        category.createdBy = this.loginService.getUser().email;
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", category)
             .map(function (res) {
             _this.categories.push(res.json().data);
             return res.json();
@@ -911,7 +921,8 @@ var CategoryService = (function () {
     };
     CategoryService.prototype.edit = function (category) {
         var _this = this;
-        return this.http.put(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/categories", category)
+        category.updatedBy = this.loginService.getUser().email;
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", category)
             .map(function (res) {
             for (var i = 0; i < _this.categories.length; i++) {
                 if (_this.categories[i].id === category.id) {
@@ -924,7 +935,7 @@ var CategoryService = (function () {
     };
     CategoryService.prototype.remove = function (name) {
         var _this = this;
-        return this.http.delete(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/categories/" + name)
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories/" + name)
             .map(function (res) {
             _this.categories = _this.categories.filter(function (item) { return item.name !== name; });
             return res.json();
@@ -935,10 +946,10 @@ var CategoryService = (function () {
 }());
 CategoryService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], CategoryService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=category.service.js.map
 
 /***/ }),
@@ -949,8 +960,8 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
 let CONFIG = {
-    url: "https://subdominio.uaifoody.info"
-    //url: "http://localhost:4000"
+    //url: "https://subdominio.uaifoody.info"
+    url: "http://localhost:4000"
 }  
 
 /***/ }),
@@ -1067,6 +1078,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1081,10 +1093,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PaymentService = (function () {
-    function PaymentService(http) {
+    function PaymentService(http, loginService) {
         var _this = this;
         this.http = http;
+        this.loginService = loginService;
         this.url = __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url;
         this.payments = [];
         this.populate().subscribe(function (result) {
@@ -1100,6 +1114,7 @@ var PaymentService = (function () {
     };
     PaymentService.prototype.register = function (payment) {
         var _this = this;
+        payment.createdBy = this.loginService.getUser().email;
         return this.http.post(this.url + "/payment", payment)
             .map(function (res) {
             _this.payments.push(res.json().data);
@@ -1109,6 +1124,7 @@ var PaymentService = (function () {
     };
     PaymentService.prototype.update = function (payment) {
         var _this = this;
+        payment.updatedBy = this.loginService.getUser().email;
         return this.http.put(this.url + "/payment", payment)
             .map(function (res) {
             for (var i = 0; i < _this.payments.length; i++) {
@@ -1136,10 +1152,10 @@ var PaymentService = (function () {
 }());
 PaymentService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], PaymentService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=payment.service.js.map
 
 /***/ }),
@@ -1152,7 +1168,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1167,17 +1184,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RestaurantService = (function () {
-    function RestaurantService(http) {
+    function RestaurantService(http, loginService) {
         var _this = this;
         this.http = http;
+        this.loginService = loginService;
         this.restaurants = [];
         this.populate().subscribe(function (result) {
             _this.restaurants = result.data;
         });
     }
     RestaurantService.prototype.populate = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/restaurant")
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant")
             .map(function (res) {
             return res.json();
         })
@@ -1185,7 +1204,8 @@ var RestaurantService = (function () {
     };
     RestaurantService.prototype.register = function (restaurant) {
         var _this = this;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant)
+        restaurant.createdBy = this.loginService.getUser().email;
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant)
             .map(function (res) {
             _this.restaurants.push(res.json().data);
             return res.json();
@@ -1194,11 +1214,12 @@ var RestaurantService = (function () {
     };
     RestaurantService.prototype.edit = function (restaurant) {
         var _this = this;
-        return this.http.put(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant)
+        restaurant.updatedBy = this.loginService.getUser().email;
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant)
             .map(function (res) {
             for (var i = 0; i < _this.restaurants.length; i++) {
                 if (_this.restaurants[i].id === restaurant.id) {
-                    _this.restaurants[i] = restaurant;
+                    _this.restaurants[i] = res.json().data;
                 }
             }
             return res.json();
@@ -1212,11 +1233,71 @@ var RestaurantService = (function () {
 }());
 RestaurantService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], RestaurantService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=restaurant.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/upload.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var UploadService = (function () {
+    //url:string = 'https://uaifomemaster.com';
+    function UploadService(http) {
+        this.http = http;
+        this.url = __WEBPACK_IMPORTED_MODULE_1__config_service__["a" /* CONFIG */].url;
+    }
+    UploadService.prototype.getUrl = function (image) {
+        var _this = this;
+        return this.http.post(this.url + "/upload-file", image)
+            .map(function (res) {
+            var result = res.json();
+            if (result && result.status) {
+                result.url = _this.url + result.url;
+            }
+            return result;
+        })
+            .catch(function (error) {
+            if (error.json()) {
+                return error.json();
+            }
+            else {
+                return error;
+            }
+        });
+    };
+    return UploadService;
+}());
+UploadService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], UploadService);
+
+var _a;
+//# sourceMappingURL=upload.service.js.map
 
 /***/ }),
 
@@ -1229,6 +1310,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1243,10 +1325,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var UserService = (function () {
-    function UserService(http) {
+    function UserService(http, loginService) {
         var _this = this;
         this.http = http;
+        this.loginService = loginService;
         this.users = [];
         this.populate().subscribe(function (result) {
             _this.users = result.data;
@@ -1261,6 +1345,7 @@ var UserService = (function () {
     };
     UserService.prototype.register = function (users) {
         var _this = this;
+        users.createdBy = this.loginService.getUser().email;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", users)
             .map(function (res) {
             _this.users.push(res.json().data);
@@ -1270,6 +1355,7 @@ var UserService = (function () {
     };
     UserService.prototype.registerUserRestaurant = function (users) {
         users.permission = 'admin';
+        users.createdBy = this.loginService.getUser().email;
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-restaurant", users)
             .map(function (res) {
             return res.json();
@@ -1278,6 +1364,7 @@ var UserService = (function () {
     };
     UserService.prototype.edit = function (users) {
         var _this = this;
+        users.updatedBy = this.loginService.getUser().email;
         return this.http.put(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", users)
             .map(function (res) {
             for (var i = 0; i < _this.users.length; i++) {
@@ -1312,10 +1399,10 @@ var UserService = (function () {
 }());
 UserService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], UserService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=user.service.js.map
 
 /***/ }),

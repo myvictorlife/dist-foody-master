@@ -39,7 +39,7 @@ PaymentRoutingModule = __decorate([
 /***/ "../../../../../src/app/layout/payment/payment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Formas de Pagamento'\" [icon]=\"'fa-edit'\"></app-page-header>\n\n    \n    \t<div class=\"row\">\n\t        \n\t        <div class=\"col col-xl-6 col-lg-8\">\n\t        \t<div class=\"card mb-6\">\n\t                <div class=\"card-header\">\n\t                    Formas de Pagamento\n\t                </div>\n\t                <div class=\"card-block table-responsive\">\n\t                    <table class=\"table table-hover\">\n\t                        <thead>\n\t                        <tr>\n\t                            <th>#</th>\n\t                            <th>Tipo</th>\n\t                            <th>Cartão</th>\n\t                            <th>Online</th>\n\t                        </tr>\n\t                        </thead>\n\t                        <tbody>\n\t\t                        <tr *ngFor=\"let pay of payments\" (click)=\"edit(pay)\">\n\t\t                            <th scope=\"row\">{{pay.id}}</th>\n\t\t                            <td>{{pay.name}}</td>\n\t\t                            <td>{{pay.card}}</td>\n\t\t                            <td>{{pay.is_online == 1 ? 'SIM': 'NÃO'}}</td>\n\t\t                            <td (click)=\"remove(content, pay)\">Remover</td>\n\t\t                        </tr>\n\t                        </tbody>\n\t                    </table>\n\t                </div>\n            \t</div>\n\t\t    </div>\n\t\t    <div class=\"col-lg-5\">\n\n\t            <form class=\"form-horizontal\" [formGroup]=\"formulario\">\n\t                <div class=\"form-group\" [ngClass]=\"aplicaCssErro('name')\" >\n\t                    <fieldset class=\"form-group\">\n\t                        <label>Tipo*</label>\n\t                        <input type=\"text\" class=\"form-control\"\n\t                            formControlName=\"name\"\n\t                            id=\"name\" placeholder=\"Tipo\" >\n\n\t                        <app-campo-control-erro\n\t                          [mostrarErro]=\"verificaValidTouched('name')\"\n\t                          msgErro=\"Nome é obrigatório.\">\n\t                        </app-campo-control-erro>\n\t                    </fieldset>\n\t                </div>\n\n\t                <div class=\"form-group\" [ngClass]=\"aplicaCssErro('name')\" >\n\t                    <fieldset class=\"form-group\">\n\t                        <label>Cartão</label>\n\t                        <input type=\"text\" class=\"form-control\"\n\t                            formControlName=\"card\"\n\t                            id=\"card\" placeholder=\"Master Card\" >\n\t                    </fieldset>\n\t                </div>\n\n\t                <fieldset class=\"form-group text-center\">\n                        <label>Online*</label>\n                        <div class=\"radio\">\n                            <label>\n                                <input type=\"radio\" formControlName=\"is_online\" id=\"optionsRadios1\" value=\"1\" checked=\"\"> Sim\n                            </label> &nbsp;&nbsp;&nbsp;\n                            <label>\n                                <input type=\"radio\" formControlName=\"is_online\" id=\"optionsRadios2\" value=\"0\"> Não\n                            </label>\n                        </div>\n                    </fieldset>\n\n\t                <div class=\"text-center\">\n\t                \t<button type=\"submit\" class=\"btn btn-default\" (click)=\"reset()\" >Limpar</button>\n\t\t\t\t\t\t<button type=\"submit\" [disabled]=\"!formulario.valid\" class=\"btn btn-primary\" (click)=\"register()\" >Salvar</button>\n\t\t\t\t\t</div> \n\n\t            </form>\n\n\t        </div>\n\t    </div>\n        \n\n        <ng-template #content let-c=\"close\" let-d=\"dismiss\">\n\t\t  <div class=\"modal-header\">\n\t\t    <h4 class=\"modal-title\">Remover forma de pagamento</h4>\n\t\t    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('no')\">\n\t\t      <span aria-hidden=\"true\">&times;</span>\n\t\t    </button>\n\t\t  </div>\n\t\t  <div class=\"modal-body\">\n\t\t    <p>{{categoria}}</p>\n\t\t  </div>\n\t\t  <div class=\"modal-footer\">\n\t\t    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('no')\">Não</button>\n\t\t    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('yes')\">Sim</button>\n\t\t  </div>\n\t\t</ng-template>\n</div>\n"
+module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Formas de Pagamento'\" [icon]=\"'fa-edit'\"></app-page-header>\n\n    \n    \t<div class=\"row\">\n\t        \n\t        <div class=\"col col-xl-6 col-lg-8\">\n\t        \t<div class=\"card mb-6\">\n\t                <div class=\"card-header\">\n\t                    Formas de Pagamento\n\t                </div>\n\t                <div class=\"card-block table-responsive\">\n\t                    <table class=\"table table-hover\">\n\t                        <thead>\n\t                        <tr>\n\t                            <th>#</th>\n\t                            <th>img</th>\n\t                            <th>Tipo</th>\n\t                            <th>Cartão</th>\n\t                            <th>Online</th>\n\t                        </tr>\n\t                        </thead>\n\t                        <tbody>\n\t\t                        <tr *ngFor=\"let pay of payments\" (click)=\"edit(pay)\">\n\t\t                            <th scope=\"row\">{{pay.id}}</th>\n\t\t                            <td><img src=\"{{ pay.img }}\" alt=\"\" width=\"70\" height=\"50\"></td>\n\t\t                            <td>{{pay.name}}</td>\n\t\t                            <td>{{pay.card}}</td>\n\t\t                            <td>{{pay.is_online == 1 ? 'SIM': 'NÃO'}}</td>\n\t\t                            <td (click)=\"remove(content, pay)\">Remover</td>\n\t\t                        </tr>\n\t                        </tbody>\n\t                    </table>\n\t                </div>\n            \t</div>\n\t\t    </div>\n\t\t    <div class=\"col-lg-5\">\n\n\t            <form class=\"form-horizontal\" [formGroup]=\"formulario\">\n\t            \t<div class=\"row\">\n\t\t  \t\t\t\t<div class=\"col-lg-3\">\n\t\t  \t\t\t\t</div>\n\t\t\t\t    \t<div class=\"col-lg-5\">\n\t\t\t\t    \t\t<!-- <img src=\"assets/images/r3.jpg\" class=\"rounded float-left\" width=\"350\" height=\"200\" > -->\n\t\t\t\t            <img *ngIf=\"!formulario.get('img').value\" src=\"assets/images/credit-card.png\" class=\"rounded float-left\" width=\"70\" height=\"50\" >\n\n\t\t\t\t            <img *ngIf=\"formulario.get('img').value\" [src]=\"formulario.get('img').value\" class=\"rounded float-left\" width=\"70\" height=\"50\" >\n\n\t\t                <div style=\"cursor: pointer;\" *ngIf=\"formulario.get('img').value\" (click)=\"removeImg()\">Remover imagem</div>\n\n\t\t\t\t    \t\t<label class=\"custom-file size-input-file\" >\n\t\t\t\t\t\t\t  <input type=\"file\" id=\"file\" class=\"custom-file-input\" accept=\"image/*\" (change)=\"changeListener($event, 'imgFile')\"  >\n\t\t\t\t\t\t\t  <span class=\"custom-file-control\"></span>\n\t\t\t\t\t\t\t</label>\n\t\t\t\t    \t</div> \n\t\t\t\t    </div>\n\t                <div class=\"form-group\" [ngClass]=\"aplicaCssErro('name')\" >\n\t                    <fieldset class=\"form-group\">\n\t                        <label>Tipo*</label>\n\t                        <input type=\"text\" class=\"form-control\"\n\t                            formControlName=\"name\"\n\t                            id=\"name\" placeholder=\"Tipo\" >\n\n\t                        <app-campo-control-erro\n\t                          [mostrarErro]=\"verificaValidTouched('name')\"\n\t                          msgErro=\"Nome é obrigatório.\">\n\t                        </app-campo-control-erro>\n\t                    </fieldset>\n\t                </div>\n\n\t                <div class=\"form-group\" [ngClass]=\"aplicaCssErro('name')\" >\n\t                    <fieldset class=\"form-group\">\n\t                        <label>Cartão</label>\n\t                        <input type=\"text\" class=\"form-control\"\n\t                            formControlName=\"card\"\n\t                            id=\"card\" placeholder=\"Master Card\" >\n\t                    </fieldset>\n\t                </div>\n\n\t                <fieldset class=\"form-group text-center\">\n                        <label>Online*</label>\n                        <div class=\"radio\">\n                            <label>\n                                <input type=\"radio\" formControlName=\"is_online\" id=\"optionsRadios1\" value=\"1\" checked=\"\"> Sim\n                            </label> &nbsp;&nbsp;&nbsp;\n                            <label>\n                                <input type=\"radio\" formControlName=\"is_online\" id=\"optionsRadios2\" value=\"0\"> Não\n                            </label>\n                        </div>\n                    </fieldset>\n\n\t                <div class=\"text-center\">\n\t                \t<button type=\"submit\" class=\"btn btn-default\" (click)=\"reset()\" >Limpar</button>\n\t\t\t\t\t\t<button type=\"submit\" [disabled]=\"!formulario.valid\" class=\"btn btn-primary\" (click)=\"register()\" >Salvar</button>\n\t\t\t\t\t</div> \n\n\t            </form>\n\n\t        </div>\n\t    </div>\n        \n\n        <ng-template #content let-c=\"close\" let-d=\"dismiss\">\n\t\t  <div class=\"modal-header\">\n\t\t    <h4 class=\"modal-title\">Remover forma de pagamento</h4>\n\t\t    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('no')\">\n\t\t      <span aria-hidden=\"true\">&times;</span>\n\t\t    </button>\n\t\t  </div>\n\t\t  <div class=\"modal-body\">\n\t\t    <p>{{categoria}}</p>\n\t\t  </div>\n\t\t  <div class=\"modal-footer\">\n\t\t    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('no')\">Não</button>\n\t\t    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('yes')\">Sim</button>\n\t\t  </div>\n\t\t</ng-template>\n</div>\n"
 
 /***/ }),
 
@@ -71,6 +71,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_payment_service__ = __webpack_require__("../../../../../src/app/shared/services/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_services_upload_service__ = __webpack_require__("../../../../../src/app/shared/services/upload.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -87,10 +88,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PaymentComponent = (function () {
-    function PaymentComponent(paymentService, toastr, formBuilder, modalService) {
+    function PaymentComponent(paymentService, uploadService, toastr, formBuilder, modalService) {
         var _this = this;
         this.paymentService = paymentService;
+        this.uploadService = uploadService;
         this.toastr = toastr;
         this.formBuilder = formBuilder;
         this.modalService = modalService;
@@ -105,6 +108,7 @@ var PaymentComponent = (function () {
     PaymentComponent.prototype.ngOnInit = function () {
         this.formulario = this.formBuilder.group({
             id: [null, []],
+            img: [null, []],
             name: [null, [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* Validators */].required]],
             card: [null, []],
             is_online: [null, []],
@@ -171,6 +175,7 @@ var PaymentComponent = (function () {
     PaymentComponent.prototype.edit = function (pay) {
         this.formulario.setValue({
             id: pay.id,
+            img: pay.img,
             name: pay.name,
             card: pay.card,
             is_online: pay.is_online == 1 ? "1" : "0"
@@ -196,6 +201,9 @@ var PaymentComponent = (function () {
         }, function (reason) {
         });
     };
+    PaymentComponent.prototype.removeImg = function () {
+        this.formulario.controls['img'].setValue(null);
+    };
     PaymentComponent.prototype.getDismissReason = function (reason) {
         if (reason === __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["b" /* ModalDismissReasons */].ESC) {
             return 'by pressing ESC';
@@ -207,6 +215,28 @@ var PaymentComponent = (function () {
             return "with: " + reason;
         }
     };
+    PaymentComponent.prototype.changeListener = function ($event) {
+        this.readThis($event.target);
+    };
+    PaymentComponent.prototype.readThis = function (inputValue) {
+        var _this = this;
+        var file = inputValue.files[0];
+        var myReader = new FileReader();
+        myReader.onloadend = function (e) {
+            var base64 = myReader.result.substring(myReader.result.indexOf(",") + 1, myReader.result.length);
+            var jsonImage = {
+                filename: file.name,
+                type: file.type,
+                size: file.size,
+                base64: base64
+            };
+            _this.uploadService.getUrl(jsonImage).subscribe(function (result) {
+                console.log(result.url);
+                _this.formulario.controls['img'].setValue(result.url);
+            });
+        };
+        myReader.readAsDataURL(file);
+    };
     return PaymentComponent;
 }());
 PaymentComponent = __decorate([
@@ -216,10 +246,10 @@ PaymentComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/layout/payment/payment.component.scss")],
         animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_payment_service__["a" /* PaymentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_payment_service__["a" /* PaymentService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_payment_service__["a" /* PaymentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_payment_service__["a" /* PaymentService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__shared_services_upload_service__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__shared_services_upload_service__["a" /* UploadService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */]) === "function" && _e || Object])
 ], PaymentComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=payment.component.js.map
 
 /***/ }),
