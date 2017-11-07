@@ -158,6 +158,7 @@ var RestaurantComponent = (function () {
             buttonClasses: 'btn btn-block btn-secondary'
         };
         this.categories = this.categoryService.getAll();
+        this.bkpCategories = [];
         if (!this.categories.length) {
             this.categoryService.getCategory()
                 .subscribe(function (result) {
