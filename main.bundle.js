@@ -344,6 +344,7 @@ var HeaderComponent = (function () {
     };
     HeaderComponent.prototype.onLoggedout = function () {
         localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     HeaderComponent.prototype.changeLang = function (language) {
         this.translate.use(language);
