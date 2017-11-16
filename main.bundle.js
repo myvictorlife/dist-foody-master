@@ -961,7 +961,7 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
 let CONFIG = {
-    url: "https://api.saciafome.com"
+    url: "https://prod.saciafome.com"
     //url: "http://localhost:4000"
 }  
 
