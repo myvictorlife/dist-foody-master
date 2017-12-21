@@ -988,8 +988,8 @@ var NgxMyDatePicker = (function () {
 
 
 var NGX_DP_VALUE_ACCESSOR = {
-    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* NG_VALUE_ACCESSOR */],
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* forwardRef */])(function () { return NgxMyDatePickerDirective; }),
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* NG_VALUE_ACCESSOR */],
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* forwardRef */])(function () { return NgxMyDatePickerDirective; }),
     multi: true
 };
 var NgxMyDatePickerDirective = (function () {

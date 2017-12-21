@@ -169,27 +169,27 @@ var RestaurantComponent = (function () {
     RestaurantComponent.prototype.ngOnInit = function () {
         this.formulario = this.formBuilder.group({
             id: [null, []],
-            name: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].minLength(3)]],
+            name: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].minLength(3)]],
             phone: [],
-            street: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            number: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
+            street: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            number: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
             complement: [null],
-            neighborhood: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            city: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            state: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            cep: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            latitude: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            longitude: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            category_ids: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            activated: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
+            neighborhood: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            city: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            state: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            cep: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            latitude: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            longitude: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            category_ids: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            activated: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
             taxa_porcentage: [],
             taxa_fixa: []
         });
         this.formularioUser = this.formBuilder.group({
-            name: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].minLength(3)]],
-            email: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            password: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
-            restaurants_id: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["c" /* Validators */].required]],
+            name: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].minLength(3)]],
+            email: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            password: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
+            restaurants_id: [null, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* Validators */].required]],
         });
         this.restaurants = this.restaurantService.getAll();
         if (!this.restaurants.length) {
@@ -304,7 +304,7 @@ var RestaurantComponent = (function () {
             console.log(campo);
             var controle = formGroup.get(campo);
             controle.markAsDirty();
-            if (controle instanceof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* FormGroup */]) {
+            if (controle instanceof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* FormGroup */]) {
                 _this.verificaValidacoesForm(controle);
             }
         });
@@ -374,7 +374,7 @@ RestaurantComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/layout/restaurant/restaurant.component.scss")],
         animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_restaurant_service__["a" /* RestaurantService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_restaurant_service__["a" /* RestaurantService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_category_service__["a" /* CategoryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_category_service__["a" /* CategoryService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_user_service__["a" /* UserService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_forms__["e" /* FormBuilder */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_restaurant_service__["a" /* RestaurantService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_restaurant_service__["a" /* RestaurantService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_category_service__["a" /* CategoryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_category_service__["a" /* CategoryService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_user_service__["a" /* UserService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["g" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_forms__["g" /* FormBuilder */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__["c" /* NgbModal */]) === "function" && _f || Object])
 ], RestaurantComponent);
 
 var _a, _b, _c, _d, _e, _f;
@@ -467,8 +467,8 @@ RestaurantModule = __decorate([
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
 var MULTISELECT_VALUE_ACCESSOR = {
-    provide: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* NG_VALUE_ACCESSOR */],
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_12" /* forwardRef */])(function () { return MultiselectDropdown; }),
+    provide: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* NG_VALUE_ACCESSOR */],
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* forwardRef */])(function () { return MultiselectDropdown; }),
     multi: true
 };
 var MultiselectDropdown = (function () {
@@ -854,7 +854,7 @@ MultiselectDropdown.decorators = [
 /** @nocollapse */
 MultiselectDropdown.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* ElementRef */], },
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* FormBuilder */], },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* FormBuilder */], },
     { type: __WEBPACK_IMPORTED_MODULE_4__search_filter_pipe__["a" /* MultiSelectSearchFilter */], },
     { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["N" /* IterableDiffers */], },
 ]; };

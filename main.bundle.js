@@ -1,4 +1,4 @@
-webpackJsonp([12],{
+webpackJsonp([14],{
 
 /***/ "../../../../../src async recursive":
 /***/ (function(module, exports, __webpack_require__) {
@@ -6,7 +6,12 @@ webpackJsonp([12],{
 var map = {
 	"./category/category.module": [
 		"../../../../../src/app/layout/category/category.module.ts",
-		10,
+		12,
+		0
+	],
+	"./cupons/cupons.module": [
+		"../../../../../src/app/layout/cupons/cupons.module.ts",
+		11,
 		0
 	],
 	"./dashboard/dashboard.module": [
@@ -16,12 +21,12 @@ var map = {
 	],
 	"./geral/geral.module": [
 		"../../../../../src/app/layout/geral/geral.module.ts",
-		9,
+		10,
 		0
 	],
 	"./layout/layout.module": [
 		"../../../../../src/app/layout/layout.module.ts",
-		8,
+		9,
 		0
 	],
 	"./login/login.module": [
@@ -36,12 +41,12 @@ var map = {
 	],
 	"./payment/payment.module": [
 		"../../../../../src/app/layout/payment/payment.module.ts",
-		7,
+		8,
 		0
 	],
 	"./profile/profile.module": [
 		"../../../../../src/app/layout/profile/profile.module.ts",
-		6,
+		7,
 		0
 	],
 	"./restaurant/restaurant.module": [
@@ -52,6 +57,11 @@ var map = {
 	"./signup/signup.module": [
 		"../../../../../src/app/signup/signup.module.ts",
 		3,
+		0
+	],
+	"./status/status.module": [
+		"../../../../../src/app/layout/status/status.module.ts",
+		6,
 		0
 	]
 };
@@ -204,6 +214,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__ = __webpack_require__("../../../../../src/app/shared/services/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__ = __webpack_require__("../../../../../src/app/shared/services/app-version.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__ = __webpack_require__("../../../../../src/app/shared/services/upload.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_services_cupon_service__ = __webpack_require__("../../../../../src/app/shared/services/cupon.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__shared_services_orders_service__ = __webpack_require__("../../../../../src/app/shared/services/orders.service.ts");
 /* unused harmony export HttpLoaderFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -224,6 +236,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // AoT requires an exported function for factories
 // Services
+
+
 
 
 
@@ -264,7 +278,9 @@ AppModule = __decorate([
             })
         ],
         exports: [],
-        providers: [__WEBPACK_IMPORTED_MODULE_9__shared__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_10__shared_services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_11__shared_services_dashboard_service__["a" /* DashboardService */], __WEBPACK_IMPORTED_MODULE_12__shared_services_restaurant_service__["a" /* RestaurantService */], __WEBPACK_IMPORTED_MODULE_13__shared_services_category_service__["a" /* CategoryService */], __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__["a" /* AppVersionService */], __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__["a" /* UploadService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_9__shared__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_10__shared_services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_11__shared_services_dashboard_service__["a" /* DashboardService */], __WEBPACK_IMPORTED_MODULE_12__shared_services_restaurant_service__["a" /* RestaurantService */], __WEBPACK_IMPORTED_MODULE_13__shared_services_category_service__["a" /* CategoryService */],
+            __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__["a" /* AppVersionService */], __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__["a" /* UploadService */], __WEBPACK_IMPORTED_MODULE_18__shared_services_cupon_service__["a" /* CuponService */], __WEBPACK_IMPORTED_MODULE_19__shared_services_orders_service__["a" /* OrdersService */]
+        ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -382,7 +398,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/shared/components/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n         <a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}\n        </a> \n  <!--      <a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts' | translate }}\n        </a> -->\n<!--         <a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/restaurant']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-building-o\"></i>&nbsp;{{ 'newrestaurant' | translate }}\n        </a>\n        <a [routerLink]=\"['/category']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-file-text-o\"></i>&nbsp;{{ 'categories' | translate }}\n        </a>\n        <!-- <a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms' | translate }}\n        </a>\n        <a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement' | translate }}\n        </a>\n        <a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid' | translate }}\n        </a>\n        <a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/profile']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa fa-users\"></i>&nbsp;{{ 'users' | translate }}\n        </a>\n        <a [routerLink]=\"['/payment']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-credit-card\"></i>&nbsp;{{ 'form.payment' | translate }}\n        </a>\n        <a [routerLink]=\"['/geral']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-cogs\"></i>&nbsp;{{ 'geral' | translate }}\n        </a>\n    </ul>\n</nav>\n"
+module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n         <a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}\n        </a> \n  <!--      <a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts' | translate }}\n        </a> -->\n<!--         <a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/restaurant']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-building-o\"></i>&nbsp;{{ 'newrestaurant' | translate }}\n        </a>\n        <a [routerLink]=\"['/category']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-file-text-o\"></i>&nbsp;{{ 'categories' | translate }}\n        </a>\n        <!-- <a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms' | translate }}\n        </a>\n        <a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement' | translate }}\n        </a>\n        <a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid' | translate }}\n        </a>\n        <a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/profile']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa fa-users\"></i>&nbsp;{{ 'users' | translate }}\n        </a>\n        <a [routerLink]=\"['/payment']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-credit-card\"></i>&nbsp;{{ 'form.payment' | translate }}\n        </a>\n        <a [routerLink]=\"['/cupons']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-gift\"></i>&nbsp;{{ 'cupons' | translate }}\n        </a>\n        <a [routerLink]=\"['/geral']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-cogs\"></i>&nbsp;{{ 'geral' | translate }}\n        </a>\n        <a [routerLink]=\"['/status']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-cogs\"></i>&nbsp;{{ 'status' | translate }}\n        </a>\n    </ul>\n</nav>\n"
 
 /***/ }),
 
@@ -962,8 +978,115 @@ var _a, _b;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
 let CONFIG = {
     url: "https://prod.saciafome.com"
-    //url: "http://localhost:4000"
+    //url: "http://localhost:8000"
+    //url: "http://dev-saciafome-com.umbler.net"
 }  
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/cupon.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__restaurant_service__ = __webpack_require__("../../../../../src/app/shared/services/restaurant.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CuponService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var CuponService = (function () {
+    function CuponService(http, restaurantService, loginService) {
+        this.http = http;
+        this.restaurantService = restaurantService;
+        this.loginService = loginService;
+        this.cupons = [];
+    }
+    CuponService.prototype.populate = function () {
+        var _this = this;
+        var restaurant = this.restaurantService.getAll();
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon/restaurant/9999")
+            .map(function (res) {
+            _this.cupons = res.json().data;
+            return res.json();
+        })
+            .catch(function (error) { return error.json(); });
+    };
+    CuponService.prototype.getAll = function () {
+        return this.cupons;
+    };
+    CuponService.prototype.register = function (cupon) {
+        var _this = this;
+        cupon.restaurants_id = 9999;
+        var json = {
+            name: 'Master'
+        };
+        cupon.json = JSON.stringify(json);
+        cupon.createdBy = this.loginService.getUser().email;
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon", cupon)
+            .map(function (res) {
+            _this.cupons.push(res.json().data);
+            return res.json();
+        })
+            .catch(function (error) { return error.json(); });
+    };
+    CuponService.prototype.edit = function (cupon) {
+        var _this = this;
+        var restaurant = this.restaurantService.getAll();
+        cupon.restaurants_id = restaurant.id;
+        var json = {
+            img: restaurant.img,
+            name: restaurant.name
+        };
+        cupon.json = JSON.stringify(json);
+        cupon.latitude = restaurant.latitude;
+        cupon.longitude = restaurant.longitude;
+        cupon.updatedBy = this.loginService.getUser().email;
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon", cupon)
+            .map(function (res) {
+            for (var i = 0; i < _this.cupons.length; i++) {
+                if (_this.cupons[i].id === cupon.id) {
+                    _this.cupons[i] = cupon;
+                }
+            }
+            return res.json();
+        })
+            .catch(function (error) { return error.json(); });
+    };
+    CuponService.prototype.remove = function (id) {
+        var _this = this;
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon/" + id)
+            .map(function (res) {
+            _this.cupons = _this.cupons.filter(function (item) { return item.id !== id; });
+            return res.json();
+        })
+            .catch(function (error) { return error.json(); });
+    };
+    return CuponService;
+}());
+CuponService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__restaurant_service__["a" /* RestaurantService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__restaurant_service__["a" /* RestaurantService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _c || Object])
+], CuponService);
+
+var _a, _b, _c;
+//# sourceMappingURL=cupon.service.js.map
 
 /***/ }),
 
@@ -1067,6 +1190,57 @@ LoginService = __decorate([
 
 var _a;
 //# sourceMappingURL=login.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/orders.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var OrdersService = (function () {
+    function OrdersService(http) {
+        this.http = http;
+        this.url = __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url;
+        this.orders = [];
+    }
+    OrdersService.prototype.findByStatus = function (status) {
+        return this.http.get(this.url + "/orders/status/" + status)
+            .map(function (res) {
+            return res.json();
+        })
+            .catch(function (error) { return error.json(); });
+    };
+    OrdersService.prototype.getAll = function () {
+        return this.orders;
+    };
+    return OrdersService;
+}());
+OrdersService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], OrdersService);
+
+var _a;
+//# sourceMappingURL=orders.service.js.map
 
 /***/ }),
 
