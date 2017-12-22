@@ -39,7 +39,7 @@ StatusRoutingModule = __decorate([
 /***/ "../../../../../src/app/layout/status/status.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Busca Pedidos Por Status'\" [icon]=\"'fa-edit'\"></app-page-header>\n</div>\n\n<h6>1. PENDENTE - AGUARDANDO CONFIRMAÇÃO</h6>\n<h6>2. EM PREPARO - JÁ FOI CONFIRMADO</h6>\n<h6>3. SAIU PARA ENTREGA</h6>\n<h6>4. CONCLUÍDO - PEDIDO ENTREGUE</h6>\n<h6>5. CANCELADO - PEDIDO CANCELADO</h6>\n<h6>Escolha um número:</h6>\n\n<div class=\"row\">\n\t<div class=\"col-xl-2\">\n    \t<input class=\"form-control\"   name=\"startDate\" [(ngModel)]=\"status\" />\n    </div>\n    <div class=\"col-xl-2\">\n    \t<button type=\"button\" class=\"btn btn-primary\" (click)=\"findByStatus(status)\">\n                Buscar\n    \t</button>\n    </div>\n</div>\n\n<br/>\n\n<table class=\"table table-responsive table-hover table-bordered\">\n  <thead>\n    <tr>\n      <th>#id</th>\n      <th>Usuário</th>\n      <th>Estabelecimento</th>\n      <th>Entregar</th>\n      <th>Status</th>\n      <th>Observação</th>\n      <th>Criado</th>\n      <th>Editado</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let order of orders\">\n      <td>{{order.id}}</td>\n      <td>{{getUser(order.orders.user)}}</td>\n      <td>{{getRestaurant(order.orders.restaurant)}}</td>\n      <td>{{order.flag_delivery ? 'SIM' : 'NÂO'}}</td>\n      <td>{{order.status}}</td>\n      <td>{{order.note}}</td>\n      <td>{{order.createdAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n      <td>{{order.updatedAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n    </tr>\n  </tbody>\n</table>\n"
+module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Busca Pedidos Por Status'\" [icon]=\"'fa-edit'\"></app-page-header>\n</div>\n\n<h6>1. PENDENTE - AGUARDANDO CONFIRMAÇÃO</h6>\n<h6>2. EM PREPARO - JÁ FOI CONFIRMADO</h6>\n<h6>3. SAIU PARA ENTREGA</h6>\n<h6>4. CONCLUÍDO - PEDIDO ENTREGUE</h6>\n<h6>5. CANCELADO - PEDIDO CANCELADO</h6>\n<h6>Escolha um número:</h6>\n\n<div class=\"row\">\n\t<div class=\"col-xl-2\">\n    \t<input class=\"form-control\"   name=\"startDate\" [(ngModel)]=\"status\" />\n    </div>\n    <div class=\"col-xl-2\">\n    \t<button type=\"button\" class=\"btn btn-primary\" (click)=\"findByStatus(status)\">\n                Buscar\n    \t</button>\n    </div>\n    <div class=\"col-xl-2\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"stopAudio()\">\n                Para audio\n      </button>\n    </div>\n    <div class=\"col-xl-2\">\n      <button *ngIf=\"showAudio\" type=\"button\" class=\"btn btn-primary\" (click)=\"changeAudio(false)\">\n          Esta com Audio\n      </button>\n      <button *ngIf=\"!showAudio\" type=\"button\" class=\"btn\" (click)=\"changeAudio(true)\">\n          Esta sem Audio\n      </button>\n    </div>\n</div>\n\n<br/>\n\n<table class=\"table table-responsive table-hover table-bordered\">\n  <thead>\n    <tr>\n      <th>#id</th>\n      <th>Usuário</th>\n      <th>Estabelecimento</th>\n      <th>Entregar</th>\n      <th>Status</th>\n      <th>Observação</th>\n      <th>Espera</th>\n      <th>Criado</th>\n      <th>Editado</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let order of orders\">\n      <td>{{order.id}}</td>\n      <td>{{getUser(order.orders.user)}}</td>\n      <td>{{getRestaurant(order.orders.restaurant)}}</td>\n      <td>{{order.flag_delivery ? 'SIM' : 'NÂO'}}</td>\n      <td>{{order.status}}</td>\n      <td>{{order.note}}</td>\n      <td>{{getDate(order)}}</td>\n      <td>{{order.createdAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n      <td>{{order.updatedAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n    </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -85,6 +85,7 @@ var StatusComponent = (function () {
     function StatusComponent(ordersService) {
         var _this = this;
         this.ordersService = ordersService;
+        this.showAudio = true;
         this.orders = [];
         this.ordersService.findByStatus(5)
             .subscribe(function (result) {
@@ -99,6 +100,7 @@ var StatusComponent = (function () {
                 .subscribe(function (result) {
                 if (result.data.length) {
                     _this.orders = result.data;
+                    _this.alertAudio();
                 }
             });
         }, 60000);
@@ -111,11 +113,40 @@ var StatusComponent = (function () {
             console.log(_this.orders);
         });
     };
+    StatusComponent.prototype.stopAudio = function () {
+        if (this.audio && !this.audio.paused) {
+            this.audio.pause();
+        }
+    };
     StatusComponent.prototype.getUser = function (user) {
         return "Nome: " + user.first_name + " " + user.last_name + " || Telefone: " + user.phone;
     };
     StatusComponent.prototype.getRestaurant = function (restaurant) {
         return restaurant.name + " Telefone: " + restaurant.phone;
+    };
+    StatusComponent.prototype.getDate = function (order) {
+        if (parseInt(order.status) === 1) {
+            var dateNow = new Date();
+            var dateCreated = new Date(order.createdAt);
+            var timeDiff = Math.abs(dateCreated.getTime() - dateNow.getTime());
+            var diffMinutes = Math.ceil(timeDiff / (1000));
+            if (diffMinutes > 1) {
+                this.alertAudio();
+            }
+            return diffMinutes + "min";
+        }
+        return " - ";
+    };
+    StatusComponent.prototype.alertAudio = function () {
+        if (this.showAudio) {
+            this.audio = new Audio();
+            this.audio.src = "assets/audio/door-bell.mp3";
+            this.audio.load();
+            this.audio.play();
+        }
+    };
+    StatusComponent.prototype.changeAudio = function (status) {
+        this.showAudio = status;
     };
     return StatusComponent;
 }());
