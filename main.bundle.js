@@ -1229,6 +1229,13 @@ var OrdersService = (function () {
         })
             .catch(function (error) { return error.json(); });
     };
+    OrdersService.prototype.sendNotification = function (notification) {
+        return this.http.post(this.url + "/send-notification", notification)
+            .map(function (res) {
+            return res.json();
+        })
+            .catch(function (error) { return error.json(); });
+    };
     OrdersService.prototype.getAll = function () {
         return this.orders;
     };

@@ -39,7 +39,7 @@ StatusRoutingModule = __decorate([
 /***/ "../../../../../src/app/layout/status/status.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Busca Pedidos Por Status'\" [icon]=\"'fa-edit'\"></app-page-header>\n</div>\n\n<h6>1. PENDENTE - AGUARDANDO CONFIRMAÇÃO</h6>\n<h6>2. EM PREPARO - JÁ FOI CONFIRMADO</h6>\n<h6>3. SAIU PARA ENTREGA</h6>\n<h6>4. CONCLUÍDO - PEDIDO ENTREGUE</h6>\n<h6>5. CANCELADO - PEDIDO CANCELADO</h6>\n<h6>Escolha um número:</h6>\n\n<div class=\"row\">\n\t<div class=\"col-xl-2\">\n    \t<input class=\"form-control\"   name=\"startDate\" [(ngModel)]=\"status\" />\n    </div>\n    <div class=\"col-xl-2\">\n    \t<button type=\"button\" class=\"btn btn-primary\" (click)=\"findByStatus(status)\">\n                Buscar\n    \t</button>\n    </div>\n    <div class=\"col-xl-2\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"stopAudio()\">\n                Para audio\n      </button>\n    </div>\n    <div class=\"col-xl-2\">\n      <button *ngIf=\"showAudio\" type=\"button\" class=\"btn btn-primary\" (click)=\"changeAudio(false)\">\n          Esta com Audio\n      </button>\n      <button *ngIf=\"!showAudio\" type=\"button\" class=\"btn\" (click)=\"changeAudio(true)\">\n          Esta sem Audio\n      </button>\n    </div>\n</div>\n\n<br/>\n\n<table class=\"table table-responsive table-hover table-bordered\">\n  <thead>\n    <tr>\n      <th>#id</th>\n      <th>Usuário</th>\n      <th>Estabelecimento</th>\n      <th>Entregar</th>\n      <th>Status</th>\n      <th>Observação</th>\n      <th>Espera</th>\n      <th>Criado</th>\n      <th>Editado</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let order of orders\">\n      <td>{{order.id}}</td>\n      <td>{{getUser(order.orders.user)}}</td>\n      <td>{{getRestaurant(order.orders.restaurant)}}</td>\n      <td>{{order.flag_delivery ? 'SIM' : 'NÂO'}}</td>\n      <td>{{order.status}}</td>\n      <td>{{order.note}}</td>\n      <td>{{getDate(order)}}</td>\n      <td>{{order.createdAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n      <td>{{order.updatedAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n    </tr>\n  </tbody>\n</table>\n"
+module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Busca Pedidos Por Status'\" [icon]=\"'fa-edit'\"></app-page-header>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-xl-5\">\n    <h6>1. PENDENTE - AGUARDANDO CONFIRMAÇÃO</h6>\n    <h6>2. EM PREPARO - JÁ FOI CONFIRMADO</h6>\n    <h6>3. SAIU PARA ENTREGA</h6>\n    <h6>4. CONCLUÍDO - PEDIDO ENTREGUE</h6>\n    <h6>5. CANCELADO - PEDIDO CANCELADO</h6>\n    <h6>Escolha um número:</h6>\n  </div>\n  <div *ngIf=\"objectNotification.user.first_name\" class=\"col-xl-5\">\n    <h4>Enviar notificação</h4>\n    Cliente: {{objectNotification.user.first_name}} {{objectNotification.user.last_name}}\n    <span *ngIf=\"!objectNotification.pushUserId\">Não é possivel enviar notificação.</span>\n    <div *ngIf=\"objectNotification.pushUserId\">\n      <textarea type=\"text\" class=\"form-control\"\n      [(ngModel)]=\"notification\"\n      id=\"notification\" rows=\"3\" ></textarea>\n      <button style=\"float: right; margin-top: 10px;\" type=\"button\" class=\"btn btn-primary\" (click)=\"sendNotification()\">\n              Enviar\n      </button>\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n\t<div class=\"col-xl-2\">\n    \t<input class=\"form-control\"   name=\"startDate\" [(ngModel)]=\"status\" />\n    </div>\n    <div class=\"col-xl-2\">\n    \t<button type=\"button\" class=\"btn btn-primary\" (click)=\"findByStatus(status)\">\n                Buscar\n    \t</button>\n    </div>\n    <div class=\"col-xl-2\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"stopAudio()\">\n                Para audio\n      </button>\n    </div>\n    <div class=\"col-xl-2\">\n      <button *ngIf=\"showAudio\" type=\"button\" class=\"btn btn-primary\" (click)=\"changeAudio(false)\">\n          Esta com Audio\n      </button>\n      <button *ngIf=\"!showAudio\" type=\"button\" class=\"btn\" (click)=\"changeAudio(true)\">\n          Esta sem Audio\n      </button>\n    </div>\n</div>\n\n<br/>\n\n<table class=\"table table-responsive table-hover table-bordered\">\n  <thead>\n    <tr>\n      <th>#id</th>\n      <th>Usuário</th>\n      <th>Estabelecimento</th>\n      <th>Entregar</th>\n      <th>Status</th>\n      <th>Observação</th>\n      <th>Espera</th>\n      <th>Criado</th>\n      <th>Editado</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let order of orders\" (click)=\"setNotification(order)\" >\n      <td>{{order.id}}</td>\n      <td>{{getUser(order.orders.user)}}</td>\n      <td>{{getRestaurant(order.orders.restaurant)}}</td>\n      <td>{{order.flag_delivery ? 'SIM' : 'NÂO'}}</td>\n      <td>{{order.status}}</td>\n      <td>{{order.note}}</td>\n      <td>{{getDate(order)}}</td>\n      <td>{{order.createdAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n      <td>{{order.updatedAt | date:\"dd/MM/yyyy hh:mm a\"}}</td>\n    </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -68,6 +68,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router_animations__ = __webpack_require__("../../../../../src/app/router.animations.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_orders_service__ = __webpack_require__("../../../../../src/app/shared/services/orders.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatusComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -81,12 +82,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var StatusComponent = (function () {
-    function StatusComponent(ordersService) {
+    function StatusComponent(ordersService, toastr) {
         var _this = this;
         this.ordersService = ordersService;
+        this.toastr = toastr;
         this.showAudio = true;
+        this.notification = "Equipe Sacia Fome esta analisando a demora de seu pedido. Por favor, aguarde!";
         this.orders = [];
+        this.newObject();
         this.ordersService.findByStatus(5)
             .subscribe(function (result) {
             _this.orders = result.data;
@@ -110,7 +115,6 @@ var StatusComponent = (function () {
         this.ordersService.findByStatus(status)
             .subscribe(function (result) {
             _this.orders = result.data;
-            console.log(_this.orders);
         });
     };
     StatusComponent.prototype.stopAudio = function () {
@@ -130,14 +134,12 @@ var StatusComponent = (function () {
             var dateCreated = new Date(order.createdAt);
             var timeDiff = Math.abs(dateCreated.getTime() - dateNow.getTime());
             var diffMinutes = Math.ceil(timeDiff / (1000));
-            if (diffMinutes > 1) {
-                this.alertAudio();
-            }
             return diffMinutes + "min";
         }
         return " - ";
     };
     StatusComponent.prototype.alertAudio = function () {
+        this.stopAudio();
         if (this.showAudio) {
             this.audio = new Audio();
             this.audio.src = "assets/audio/door-bell.mp3";
@@ -148,6 +150,30 @@ var StatusComponent = (function () {
     StatusComponent.prototype.changeAudio = function (status) {
         this.showAudio = status;
     };
+    StatusComponent.prototype.setNotification = function (order) {
+        this.objectNotification = {
+            id: order.id,
+            pushUserId: order.push_user_id,
+            message: this.notification,
+            thumb: "https://prod.saciafome.com/upload/uploads/saciafome.png",
+            restaurantName: order.orders.restaurant.name,
+            user: order.orders.user
+        };
+    };
+    StatusComponent.prototype.sendNotification = function () {
+        var _this = this;
+        var object = this.objectNotification;
+        this.newObject();
+        this.ordersService.sendNotification(object)
+            .subscribe(function (result) {
+            console.log(result);
+            _this.toastr.success('', 'Notificação foi enviada ao usuário');
+        });
+    };
+    StatusComponent.prototype.newObject = function () {
+        this.objectNotification = {};
+        this.objectNotification.user = {};
+    };
     return StatusComponent;
 }());
 StatusComponent = __decorate([
@@ -157,10 +183,10 @@ StatusComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/layout/status/status.component.scss")],
         animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_orders_service__["a" /* OrdersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_orders_service__["a" /* OrdersService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_orders_service__["a" /* OrdersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_orders_service__["a" /* OrdersService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object])
 ], StatusComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=status.component.js.map
 
 /***/ }),

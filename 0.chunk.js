@@ -6681,19 +6681,10 @@ var ToastContainerDirective = /** @class */ (function () {
 var ToastContainerModule = /** @class */ (function () {
     function ToastContainerModule() {
     }
-    /**
-     * @return {?}
-     */
-    ToastContainerModule.forRoot = function () {
-        return {
-            ngModule: ToastContainerModule,
-            providers: []
-        };
-    };
     ToastContainerModule.decorators = [
         { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */], args: [{
-                    exports: [ToastContainerDirective],
                     declarations: [ToastContainerDirective],
+                    exports: [ToastContainerDirective],
                 },] },
     ];
     /**
@@ -6755,6 +6746,37 @@ var ToastPackage = /** @class */ (function () {
         return this._onAction.asObservable();
     };
     return ToastPackage;
+}());
+
+var DefaultGlobalConfig = /** @class */ (function () {
+    function DefaultGlobalConfig() {
+        // Global
+        this.maxOpened = 0;
+        this.autoDismiss = false;
+        this.newestOnTop = true;
+        this.preventDuplicates = false;
+        this.iconClasses = {
+            error: 'toast-error',
+            info: 'toast-info',
+            success: 'toast-success',
+            warning: 'toast-warning',
+        };
+        // Individual
+        this.toastComponent = Toast;
+        this.closeButton = false;
+        this.timeOut = 5000;
+        this.extendedTimeOut = 1000;
+        this.enableHtml = false;
+        this.progressBar = false;
+        this.toastClass = 'toast';
+        this.positionClass = 'toast-top-right';
+        this.titleClass = 'toast-title';
+        this.messageClass = 'toast-message';
+        this.tapToDismiss = true;
+        this.onActivateTick = false;
+        this.progressAnimation = 'decreasing';
+    }
+    return DefaultGlobalConfig;
 }());
 
 /**
@@ -6868,42 +6890,15 @@ var ToastrService = /** @class */ (function () {
      * @param {?} sanitizer
      */
     function ToastrService(toastrConfig, overlay, _injector, sanitizer) {
-        this.toastrConfig = toastrConfig;
         this.overlay = overlay;
         this._injector = _injector;
         this.sanitizer = sanitizer;
         this.index = 0;
         this.currentlyActive = 0;
         this.toasts = [];
-        function use(source, defaultValue) {
-            return toastrConfig && source !== undefined ? source : defaultValue;
-        }
-        this.toastrConfig = this.applyConfig(toastrConfig);
-        // Global
-        this.toastrConfig.maxOpened = use(this.toastrConfig.maxOpened, 0);
-        this.toastrConfig.autoDismiss = use(this.toastrConfig.autoDismiss, false);
-        this.toastrConfig.newestOnTop = use(this.toastrConfig.newestOnTop, true);
-        this.toastrConfig.preventDuplicates = use(this.toastrConfig.preventDuplicates, false);
-        if (!this.toastrConfig.iconClasses) {
-            this.toastrConfig.iconClasses = {};
-        }
-        this.toastrConfig.iconClasses.error = this.toastrConfig.iconClasses.error || 'toast-error';
-        this.toastrConfig.iconClasses.info = this.toastrConfig.iconClasses.info || 'toast-info';
-        this.toastrConfig.iconClasses.success = this.toastrConfig.iconClasses.success || 'toast-success';
-        this.toastrConfig.iconClasses.warning = this.toastrConfig.iconClasses.warning || 'toast-warning';
-        // Individual
-        this.toastrConfig.timeOut = use(this.toastrConfig.timeOut, 5000);
-        this.toastrConfig.closeButton = use(this.toastrConfig.closeButton, false);
-        this.toastrConfig.extendedTimeOut = use(this.toastrConfig.extendedTimeOut, 1000);
-        this.toastrConfig.progressBar = use(this.toastrConfig.progressBar, false);
-        this.toastrConfig.enableHtml = use(this.toastrConfig.enableHtml, false);
-        this.toastrConfig.toastClass = use(this.toastrConfig.toastClass, 'toast');
-        this.toastrConfig.positionClass = use(this.toastrConfig.positionClass, 'toast-top-right');
-        this.toastrConfig.titleClass = use(this.toastrConfig.titleClass, 'toast-title');
-        this.toastrConfig.messageClass = use(this.toastrConfig.messageClass, 'toast-message');
-        this.toastrConfig.tapToDismiss = use(this.toastrConfig.tapToDismiss, true);
-        this.toastrConfig.toastComponent = use(this.toastrConfig.toastComponent, Toast);
-        this.toastrConfig.onActivateTick = use(this.toastrConfig.onActivateTick, false);
+        var defaultConfig = new DefaultGlobalConfig;
+        this.toastrConfig = __assign({}, defaultConfig, toastrConfig);
+        this.toastrConfig.iconClasses = __assign({}, defaultConfig.iconClasses, toastrConfig.iconClasses);
     }
     /**
      * show toast
@@ -6914,6 +6909,7 @@ var ToastrService = /** @class */ (function () {
      * @return {?}
      */
     ToastrService.prototype.show = function (message, title, override, type) {
+        if (override === void 0) { override = {}; }
         if (type === void 0) { type = ''; }
         return this._buildNotification(type, message, title, this.applyConfig(override));
     };
@@ -6925,6 +6921,7 @@ var ToastrService = /** @class */ (function () {
      * @return {?}
      */
     ToastrService.prototype.success = function (message, title, override) {
+        if (override === void 0) { override = {}; }
         var /** @type {?} */ type = ((this.toastrConfig.iconClasses)).success || '';
         return this._buildNotification(type, message, title, this.applyConfig(override));
     };
@@ -6936,6 +6933,7 @@ var ToastrService = /** @class */ (function () {
      * @return {?}
      */
     ToastrService.prototype.error = function (message, title, override) {
+        if (override === void 0) { override = {}; }
         var /** @type {?} */ type = ((this.toastrConfig.iconClasses)).error || '';
         return this._buildNotification(type, message, title, this.applyConfig(override));
     };
@@ -6947,6 +6945,7 @@ var ToastrService = /** @class */ (function () {
      * @return {?}
      */
     ToastrService.prototype.info = function (message, title, override) {
+        if (override === void 0) { override = {}; }
         var /** @type {?} */ type = ((this.toastrConfig.iconClasses)).info || '';
         return this._buildNotification(type, message, title, this.applyConfig(override));
     };
@@ -6958,6 +6957,7 @@ var ToastrService = /** @class */ (function () {
      * @return {?}
      */
     ToastrService.prototype.warning = function (message, title, override) {
+        if (override === void 0) { override = {}; }
         var /** @type {?} */ type = ((this.toastrConfig.iconClasses)).warning || '';
         return this._buildNotification(type, message, title, this.applyConfig(override));
     };
@@ -7026,29 +7026,7 @@ var ToastrService = /** @class */ (function () {
      */
     ToastrService.prototype.applyConfig = function (override) {
         if (override === void 0) { override = {}; }
-        /**
-         * @template T
-         * @param {?} source
-         * @param {?} defaultValue
-         * @return {?}
-         */
-        function use(source, defaultValue) {
-            return override && source !== undefined ? source : defaultValue;
-        }
-        var /** @type {?} */ current = __assign({}, this.toastrConfig);
-        current.closeButton = use(override.closeButton, current.closeButton);
-        current.extendedTimeOut = use(override.extendedTimeOut, current.extendedTimeOut);
-        current.progressBar = use(override.progressBar, current.progressBar);
-        current.timeOut = use(override.timeOut, current.timeOut);
-        current.enableHtml = use(override.enableHtml, current.enableHtml);
-        current.toastClass = use(override.toastClass, current.toastClass);
-        current.positionClass = use(override.positionClass, current.positionClass);
-        current.titleClass = use(override.titleClass, current.titleClass);
-        current.messageClass = use(override.messageClass, current.messageClass);
-        current.tapToDismiss = use(override.tapToDismiss, current.tapToDismiss);
-        current.toastComponent = use(override.toastComponent, current.toastComponent);
-        current.onActivateTick = use(override.onActivateTick, current.onActivateTick);
-        return current;
+        return __assign({}, this.toastrConfig, override);
     };
     /**
      * Find toast object by id
@@ -7102,7 +7080,7 @@ var ToastrService = /** @class */ (function () {
             message: message,
             toastRef: toastRef,
             onShown: toastRef.afterActivate(),
-            onHidden: toastRef.afterActivate(),
+            onHidden: toastRef.afterClosed(),
             onTap: toastPackage.onTap(),
             onAction: toastPackage.onAction(),
         };
@@ -7201,14 +7179,20 @@ var Toast = /** @class */ (function () {
      * @return {?}
      */
     Toast.prototype.updateProgress = function () {
-        if (this.width === 0 || !this.options.timeOut) {
+        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
             return;
         }
         var /** @type {?} */ now = new Date().getTime();
         var /** @type {?} */ remaining = this.hideTime - now;
         this.width = (remaining / this.options.timeOut) * 100;
+        if (this.options.progressAnimation === 'increasing') {
+            this.width = 100 - this.width;
+        }
         if (this.width <= 0) {
             this.width = 0;
+        }
+        if (this.width >= 100) {
+            this.width = 100;
         }
     };
     /**
@@ -7318,6 +7302,7 @@ var ToastrModule = /** @class */ (function () {
      * @return {?}
      */
     ToastrModule.forRoot = function (config) {
+        if (config === void 0) { config = {}; }
         return {
             ngModule: ToastrModule,
             providers: [
