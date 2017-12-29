@@ -99,6 +99,10 @@ var CategoryComponent = (function () {
             this.categoryService.getCategory()
                 .subscribe(function (result) {
                 _this.categories = result.data;
+            }, function (error) {
+                if (error.status === 401) {
+                    _this.onLoggedout();
+                }
             });
         }
     }
@@ -146,6 +150,10 @@ var CategoryComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message);
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
             else {
@@ -158,6 +166,10 @@ var CategoryComponent = (function () {
                     }
                     else {
                         _this.toastr.warning('', result.message);
+                    }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
                     }
                 });
             }
@@ -186,6 +198,10 @@ var CategoryComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message + ". Verifique se possui empresas registradas com essa categoria");
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
         }, function (reason) {
@@ -201,6 +217,10 @@ var CategoryComponent = (function () {
         else {
             return "with: " + reason;
         }
+    };
+    CategoryComponent.prototype.onLoggedout = function () {
+        localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     return CategoryComponent;
 }());

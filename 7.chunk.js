@@ -99,6 +99,10 @@ var ProfileComponent = (function () {
             this.userService.populate()
                 .subscribe(function (result) {
                 _this.profiles = result.data;
+            }, function (error) {
+                if (error.status === 401) {
+                    _this.onLoggedout();
+                }
             });
         }
     }
@@ -131,6 +135,10 @@ var ProfileComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message);
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
             else {
@@ -142,6 +150,10 @@ var ProfileComponent = (function () {
                     }
                     else {
                         _this.toastr.warning('', result.message);
+                    }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
                     }
                 });
             }
@@ -189,6 +201,10 @@ var ProfileComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message);
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
         }, function (reason) {
@@ -204,6 +220,10 @@ var ProfileComponent = (function () {
         else {
             return "with: " + reason;
         }
+    };
+    ProfileComponent.prototype.onLoggedout = function () {
+        localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     return ProfileComponent;
 }());

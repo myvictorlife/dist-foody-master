@@ -102,6 +102,10 @@ var PaymentComponent = (function () {
             this.paymentService.populate()
                 .subscribe(function (result) {
                 _this.payments = result.data;
+            }, function (error) {
+                if (error.status === 401) {
+                    _this.onLoggedout();
+                }
             });
         }
     }
@@ -152,6 +156,10 @@ var PaymentComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message);
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
             else {
@@ -164,6 +172,10 @@ var PaymentComponent = (function () {
                     }
                     else {
                         _this.toastr.warning('', result.message);
+                    }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
                     }
                 });
             }
@@ -195,6 +207,10 @@ var PaymentComponent = (function () {
                     }
                     else {
                         _this.toastr.warning('', result.message);
+                    }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
                     }
                 });
             }
@@ -233,9 +249,17 @@ var PaymentComponent = (function () {
             _this.uploadService.getUrl(jsonImage).subscribe(function (result) {
                 console.log(result.url);
                 _this.formulario.controls['img'].setValue(result.url);
+            }, function (error) {
+                if (error.status === 401) {
+                    _this.onLoggedout();
+                }
             });
         };
         myReader.readAsDataURL(file);
+    };
+    PaymentComponent.prototype.onLoggedout = function () {
+        localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     return PaymentComponent;
 }());

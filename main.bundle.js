@@ -398,7 +398,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/shared/components/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n         <a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}\n        </a> \n  <!--      <a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts' | translate }}\n        </a> -->\n<!--         <a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/restaurant']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-building-o\"></i>&nbsp;{{ 'newrestaurant' | translate }}\n        </a>\n        <a [routerLink]=\"['/category']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-file-text-o\"></i>&nbsp;{{ 'categories' | translate }}\n        </a>\n        <!-- <a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms' | translate }}\n        </a>\n        <a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement' | translate }}\n        </a>\n        <a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid' | translate }}\n        </a>\n        <a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/profile']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa fa-users\"></i>&nbsp;{{ 'users' | translate }}\n        </a>\n        <a [routerLink]=\"['/payment']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-credit-card\"></i>&nbsp;{{ 'form.payment' | translate }}\n        </a>\n        <a [routerLink]=\"['/cupons']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-gift\"></i>&nbsp;{{ 'cupons' | translate }}\n        </a>\n        <a [routerLink]=\"['/geral']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-cogs\"></i>&nbsp;{{ 'geral' | translate }}\n        </a>\n        <a [routerLink]=\"['/status']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-cogs\"></i>&nbsp;{{ 'status' | translate }}\n        </a>\n    </ul>\n</nav>\n"
+module.exports = "<nav class=\"sidebar\" [ngClass]=\"{sidebarPushRight: isActive}\">\n    <ul class=\"list-group\">\n         <a routerLink=\"/dashboard\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-dashboard\"></i>&nbsp;{{ 'dashboard' | translate }}\n        </a> \n  <!--      <a [routerLink]=\"['/charts']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-bar-chart-o\"></i>&nbsp;{{ 'charts' | translate }}\n        </a> -->\n<!--         <a [routerLink]=\"['/tables']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-table\"></i>&nbsp;{{ 'tables' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/restaurant']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-building-o\"></i>&nbsp;{{ 'newrestaurant' | translate }}\n        </a>\n        <a [routerLink]=\"['/category']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-file-text-o\"></i>&nbsp;{{ 'categories' | translate }}\n        </a>\n        <!-- <a [routerLink]=\"['/forms']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-edit\"></i>&nbsp;{{ 'forms' | translate }}\n        </a>\n        <a [routerLink]=\"['/bs-element']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-desktop\"></i>&nbsp;{{ 'boostrapElement' | translate }}\n        </a>\n        <a [routerLink]=\"['/grid']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-wrench\"></i>&nbsp;{{ 'boostrapGrid' | translate }}\n        </a>\n        <a [routerLink]=\"['/components']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-th-list\"></i>&nbsp;{{ 'component' | translate }}\n        </a> -->\n        <a [routerLink]=\"['/profile']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa fa-users\"></i>&nbsp;{{ 'users' | translate }}\n        </a>\n        <a [routerLink]=\"['/payment']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-credit-card\"></i>&nbsp;{{ 'form.payment' | translate }}\n        </a>\n        <a [routerLink]=\"['/cupons']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-gift\"></i>&nbsp;{{ 'cupons' | translate }}\n        </a>\n        <a [routerLink]=\"['/geral']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-cogs\"></i>&nbsp;{{ 'geral' | translate }}\n        </a>\n        <a [routerLink]=\"['/status']\" [routerLinkActive]=\"['router-link-active']\" class=\"list-group-item\">\n            <i class=\"fa fa-check\"></i>&nbsp;{{ 'status' | translate }}\n        </a>\n        <a [routerLink]=\"['/login']\" (click)=\"onLoggedout()\" class=\"list-group-item\">\n            <i class=\"fa fa-fw fa-power-off\"></i>&nbsp;{{ 'logout' | translate }}\n        </a>\n    </ul>\n</nav>\n"
 
 /***/ }),
 
@@ -448,6 +448,10 @@ var SidebarComponent = (function () {
         else {
             this.showMenu = element;
         }
+    };
+    SidebarComponent.prototype.onLoggedout = function () {
+        localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     return SidebarComponent;
 }());
@@ -893,6 +897,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -908,6 +914,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CategoryService = (function () {
     function CategoryService(http, loginService) {
         this.http = http;
@@ -916,12 +923,18 @@ var CategoryService = (function () {
     }
     CategoryService.prototype.getCategory = function () {
         var _this = this;
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories")
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", {
+            headers: headers
+        })
             .map(function (res) {
             _this.categories = res.json().data;
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     CategoryService.prototype.getAll = function () {
         return this.categories;
@@ -929,17 +942,27 @@ var CategoryService = (function () {
     CategoryService.prototype.register = function (category) {
         var _this = this;
         category.createdBy = this.loginService.getUser().email;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", category)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", category, {
+            headers: headers
+        })
             .map(function (res) {
             _this.categories.push(res.json().data);
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     CategoryService.prototype.edit = function (category) {
         var _this = this;
         category.updatedBy = this.loginService.getUser().email;
-        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", category)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories", category, {
+            headers: headers
+        })
             .map(function (res) {
             for (var i = 0; i < _this.categories.length; i++) {
                 if (_this.categories[i].id === category.id) {
@@ -948,16 +971,27 @@ var CategoryService = (function () {
             }
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     CategoryService.prototype.remove = function (name) {
         var _this = this;
-        return this.http.delete(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories/" + name)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/categories/" + name, {
+            headers: headers
+        })
             .map(function (res) {
             _this.categories = _this.categories.filter(function (item) { return item.name !== name; });
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
+    CategoryService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return CategoryService;
 }());
@@ -995,6 +1029,8 @@ let CONFIG = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__restaurant_service__ = __webpack_require__("../../../../../src/app/shared/services/restaurant.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CuponService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1011,6 +1047,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CuponService = (function () {
     function CuponService(http, restaurantService, loginService) {
         this.http = http;
@@ -1021,12 +1058,18 @@ var CuponService = (function () {
     CuponService.prototype.populate = function () {
         var _this = this;
         var restaurant = this.restaurantService.getAll();
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon/restaurant/9999")
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon/restaurant/9999", {
+            headers: headers
+        })
             .map(function (res) {
             _this.cupons = res.json().data;
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     CuponService.prototype.getAll = function () {
         return this.cupons;
@@ -1039,12 +1082,18 @@ var CuponService = (function () {
         };
         cupon.json = JSON.stringify(json);
         cupon.createdBy = this.loginService.getUser().email;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon", cupon)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon", cupon, {
+            headers: headers
+        })
             .map(function (res) {
             _this.cupons.push(res.json().data);
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     CuponService.prototype.edit = function (cupon) {
         var _this = this;
@@ -1058,7 +1107,11 @@ var CuponService = (function () {
         cupon.latitude = restaurant.latitude;
         cupon.longitude = restaurant.longitude;
         cupon.updatedBy = this.loginService.getUser().email;
-        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon", cupon)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon", cupon, {
+            headers: headers
+        })
             .map(function (res) {
             for (var i = 0; i < _this.cupons.length; i++) {
                 if (_this.cupons[i].id === cupon.id) {
@@ -1067,16 +1120,27 @@ var CuponService = (function () {
             }
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     CuponService.prototype.remove = function (id) {
         var _this = this;
-        return this.http.delete(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon/" + id)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/coupon/" + id, {
+            headers: headers
+        })
             .map(function (res) {
             _this.cupons = _this.cupons.filter(function (item) { return item.id !== id; });
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
+    CuponService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return CuponService;
 }());
@@ -1099,6 +1163,9 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1113,9 +1180,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var DashboardService = (function () {
-    function DashboardService(http) {
+    function DashboardService(http, loginService) {
         this.http = http;
+        this.loginService = loginService;
     }
     DashboardService.prototype.calculateByDates = function (start, end) {
         var send = {
@@ -1123,20 +1193,29 @@ var DashboardService = (function () {
             end: end,
             status: '4'
         };
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/master/dashboard", send)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/master/dashboard", send, {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
+    DashboardService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return DashboardService;
 }());
 DashboardService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], DashboardService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=dashboard.service.js.map
 
 /***/ }),
@@ -1174,12 +1253,16 @@ var LoginService = (function () {
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/authenticate-master", profile)
             .map(function (res) {
             _this.profile = res.json().data;
+            localStorage.setItem('userToken', res.json().token);
             return res.json();
         })
             .catch(function (error) { return error.json(); });
     };
     LoginService.prototype.getUser = function () {
         return this.profile;
+    };
+    LoginService.prototype.getToken = function () {
+        return localStorage.getItem('userToken');
     };
     return LoginService;
 }());
@@ -1202,6 +1285,9 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1216,37 +1302,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var OrdersService = (function () {
-    function OrdersService(http) {
+    function OrdersService(http, loginService) {
         this.http = http;
+        this.loginService = loginService;
         this.url = __WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url;
         this.orders = [];
     }
     OrdersService.prototype.findByStatus = function (status) {
-        return this.http.get(this.url + "/orders/status/" + status)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(this.url + "/orders/status/" + status, {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     OrdersService.prototype.sendNotification = function (notification) {
-        return this.http.post(this.url + "/send-notification", notification)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(this.url + "/send-notification", notification, {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     OrdersService.prototype.getAll = function () {
         return this.orders;
+    };
+    OrdersService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return OrdersService;
 }());
 OrdersService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */]) === "function" && _b || Object])
 ], OrdersService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=orders.service.js.map
 
 /***/ }),
@@ -1261,6 +1365,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1271,6 +1377,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1288,26 +1395,42 @@ var PaymentService = (function () {
         });
     }
     PaymentService.prototype.populate = function () {
-        return this.http.get(this.url + "/payment")
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(this.url + "/payment", {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     PaymentService.prototype.register = function (payment) {
         var _this = this;
         payment.createdBy = this.loginService.getUser().email;
-        return this.http.post(this.url + "/payment", payment)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(this.url + "/payment", payment, {
+            headers: headers
+        })
             .map(function (res) {
             _this.payments.push(res.json().data);
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     PaymentService.prototype.update = function (payment) {
         var _this = this;
         payment.updatedBy = this.loginService.getUser().email;
-        return this.http.put(this.url + "/payment", payment)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.put(this.url + "/payment", payment, {
+            headers: headers
+        })
             .map(function (res) {
             for (var i = 0; i < _this.payments.length; i++) {
                 if (_this.payments[i].id === payment.id) {
@@ -1316,19 +1439,30 @@ var PaymentService = (function () {
             }
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     PaymentService.prototype.remove = function (id) {
         var _this = this;
-        return this.http.delete(this.url + "/payment/" + id)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.delete(this.url + "/payment/" + id, {
+            headers: headers
+        })
             .map(function (res) {
             _this.payments = _this.payments.filter(function (item) { return item.id !== id; });
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     PaymentService.prototype.getAll = function () {
         return this.payments;
+    };
+    PaymentService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return PaymentService;
 }());
@@ -1352,6 +1486,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1362,6 +1498,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1378,26 +1515,42 @@ var RestaurantService = (function () {
         });
     }
     RestaurantService.prototype.populate = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant")
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     RestaurantService.prototype.register = function (restaurant) {
         var _this = this;
         restaurant.createdBy = this.loginService.getUser().email;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant, {
+            headers: headers
+        })
             .map(function (res) {
             _this.restaurants.push(res.json().data);
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     RestaurantService.prototype.edit = function (restaurant) {
         var _this = this;
         restaurant.updatedBy = this.loginService.getUser().email;
-        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant", restaurant, {
+            headers: headers
+        })
             .map(function (res) {
             for (var i = 0; i < _this.restaurants.length; i++) {
                 if (_this.restaurants[i].id === restaurant.id) {
@@ -1406,10 +1559,15 @@ var RestaurantService = (function () {
             }
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     RestaurantService.prototype.getAll = function () {
         return this.restaurants;
+    };
+    RestaurantService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return RestaurantService;
 }());
@@ -1493,6 +1651,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1503,6 +1663,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1519,35 +1680,57 @@ var UserService = (function () {
         });
     }
     UserService.prototype.populate = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master")
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     UserService.prototype.register = function (users) {
         var _this = this;
         users.createdBy = this.loginService.getUser().email;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", users)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", users, {
+            headers: headers
+        })
             .map(function (res) {
             _this.users.push(res.json().data);
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     UserService.prototype.registerUserRestaurant = function (users) {
         users.permission = 'admin';
         users.createdBy = this.loginService.getUser().email;
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-restaurant", users)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-restaurant", users, {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     UserService.prototype.edit = function (users) {
         var _this = this;
         users.updatedBy = this.loginService.getUser().email;
-        return this.http.put(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", users)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master", users, {
+            headers: headers
+        })
             .map(function (res) {
             for (var i = 0; i < _this.users.length; i++) {
                 if (_this.users[i].id === users.id) {
@@ -1556,26 +1739,43 @@ var UserService = (function () {
             }
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     UserService.prototype.getAll = function () {
         return this.users;
     };
     UserService.prototype.remove = function (email) {
         var _this = this;
-        return this.http.delete(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master/" + email)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + "/users-master/" + email, {
+            headers: headers
+        })
             .map(function (res) {
             _this.users = _this.users.filter(function (item) { return item.email !== email; });
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
     };
     UserService.prototype.existEmail = function (email) {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + '/users-restaurant/email/' + email)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_service__["a" /* CONFIG */].url + '/users-restaurant/email/' + email, {
+            headers: headers
+        })
             .map(function (res) {
             return res.json();
         })
-            .catch(function (error) { return error.json(); });
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
+    UserService.prototype.getToken = function () {
+        return this.loginService.getToken();
     };
     return UserService;
 }());

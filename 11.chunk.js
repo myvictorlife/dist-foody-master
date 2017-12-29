@@ -114,6 +114,10 @@ var CuponsComponent = (function () {
             this.cuponService.populate()
                 .subscribe(function (result) {
                 _this.cupons = result.data;
+            }, function (error) {
+                if (error.status === 401) {
+                    _this.onLoggedout();
+                }
             });
         }
     };
@@ -161,6 +165,10 @@ var CuponsComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message);
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
             else {
@@ -173,6 +181,10 @@ var CuponsComponent = (function () {
                     }
                     else {
                         _this.toastr.warning('', result.message);
+                    }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
                     }
                 });
             }
@@ -220,6 +232,10 @@ var CuponsComponent = (function () {
                     else {
                         _this.toastr.warning('', result.message);
                     }
+                }, function (error) {
+                    if (error.status === 401) {
+                        _this.onLoggedout();
+                    }
                 });
             }
         }, function (reason) {
@@ -243,6 +259,10 @@ var CuponsComponent = (function () {
         else {
             return "R$ " + cupon.price;
         }
+    };
+    CuponsComponent.prototype.onLoggedout = function () {
+        localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     return CuponsComponent;
 }());

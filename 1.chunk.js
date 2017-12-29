@@ -291,8 +291,20 @@ var DashboardComponent = (function () {
             alignSelectorRight: true,
         };
         // Initialized to specific date (09.10.2018)
-        this.start = { date: { year: 2017, month: 7, day: 1 } };
-        this.end = { date: { year: 2017, month: 10, day: 9 } };
+        this.start = {
+            date: {
+                year: 2017,
+                month: 7,
+                day: 1
+            }
+        };
+        this.end = {
+            date: {
+                year: 2017,
+                month: 10,
+                day: 9
+            }
+        };
         this.dashboard = {
             sales: [],
             totalRestaurants: 0,
@@ -306,10 +318,13 @@ var DashboardComponent = (function () {
         this.dashboardService.calculateByDates(init, to)
             .subscribe(function (result) {
             _this.dashboard = result.data;
+        }, function (error) {
+            if (error.status === 401) {
+                _this.onLoggedout();
+            }
         });
     }
-    DashboardComponent.prototype.ngOnInit = function () {
-    };
+    DashboardComponent.prototype.ngOnInit = function () { };
     DashboardComponent.prototype.closeAlert = function (alert) {
         var index = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);
@@ -320,11 +335,19 @@ var DashboardComponent = (function () {
         this.dashboardService.calculateByDates(init, to)
             .subscribe(function (result) {
             _this.dashboard = result.data;
+        }, function (error) {
+            if (error.status === 401) {
+                _this.onLoggedout();
+            }
         });
     };
     DashboardComponent.prototype.formatDate = function (date) {
         var day = date.date.day <= 9 ? "0" + date.date.day : date.date.day, month = date.date.month <= 9 ? "0" + date.date.month : date.date.month;
         return day + '-' + month + '-' + date.date.year;
+    };
+    DashboardComponent.prototype.onLoggedout = function () {
+        localStorage.removeItem("isUserLogged");
+        window.location.reload();
     };
     return DashboardComponent;
 }());
