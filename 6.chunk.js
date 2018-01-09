@@ -115,7 +115,7 @@ var StatusComponent = (function () {
                     _this.onLoggedout();
                 }
             });
-        }, 60000);
+        }, 20000);
     };
     StatusComponent.prototype.findByStatus = function (status) {
         var _this = this;
@@ -155,8 +155,8 @@ var StatusComponent = (function () {
         if (this.showAudio) {
             this.audio = new Audio();
             this.audio.src = "assets/audio/door-bell.mp3";
+            this.audio.autoplay = true;
             this.audio.load();
-            this.audio.play();
         }
     };
     StatusComponent.prototype.changeAudio = function (status) {

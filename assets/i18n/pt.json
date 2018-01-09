@@ -3,6 +3,7 @@
     "charts": "Caracteres",
     "menu": "Menú",
     "newrestaurant":"Novo restaurante",
+    "restaurants":"Restaurantes",
     "categories":"Categorias",
     "profile":"Perfil",
     "users":"Usuários",
@@ -18,5 +19,13 @@
     "activated":"Ativado",
     "options":"Opções",
     "privated":"Privado",
-    "discount":"Desconto"
+    "discount":"Desconto",
+    "monday": "Segunda",
+    "tuesday": "Terça",
+    "wednesday": "Quarta",
+    "thursday": "Quinta",
+    "friday": "Sexta",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "example.time":"Exemplo: 10:00 a 23:00  ou  fechado"
 }
