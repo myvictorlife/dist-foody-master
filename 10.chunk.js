@@ -39,7 +39,7 @@ GeralRoutingModule = __decorate([
 /***/ "../../../../../src/app/layout/geral/geral.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Funcionários'\" [icon]=\"'fa-edit'\"></app-page-header>\n\n    <div class=\"row\">\n            <div class=\"col col-xl-6 col-lg-10\">\n                <div class=\"card mb-3\">\n                    <div class=\"card-header\">\n                        {{ 'app.version' | translate }}\n                    </div>\n                    <div class=\"card-block table-responsive\">\n                        <table class=\"table table-hover table-bordered\">\n                            <thead>\n                            <tr>\n                                <th>#</th>\n                                <th>{{ 'version' | translate }}</th>\n                                <th>{{ 'date_created' | translate }}</th>\n                            </tr>\n                            </thead>\n                            <tbody>\n                                <tr *ngFor=\"let version of versions\" >\n                                    <td>{{version.id}}</td>\n                                    <td>{{version.version}}</td>\n                                    <td>{{version.createdAt | date: 'dd/MM/yyyy HH:mm'}}</td>\n                                </tr>\n                            </tbody>\n                        </table>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-lg-4\">\n\n                <form class=\"form-horizontal\" [formGroup]=\"formulario\">\n                    <div class=\"form-group\" [ngClass]=\"aplicaCssErro('version')\" >\n                        <fieldset class=\"form-group\">\n                            <label>{{ 'version' | translate }}*</label>\n                            <input type=\"text\" class=\"form-control\"\n                                formControlName=\"version\"\n                                id=\"version\" placeholder=\"{{ 'version' | translate }}\" >\n\n                            <app-campo-control-erro\n                              [mostrarErro]=\"verificaValidTouched('version')\"\n                              msgErro=\"{{ 'version.required' | translate }}\">\n                            </app-campo-control-erro>\n                        </fieldset>\n                    </div>\n\n                    <div class=\"text-center\">\n                        <button type=\"submit\" class=\"btn btn-default\" (click)=\"reset()\" >{{ 'clear' | translate }}</button>\n                        <button type=\"submit\" [disabled]=\"!formulario.valid\" class=\"btn btn-primary\" (click)=\"register()\" >{{ 'save' | translate }}</button>\n                    </div>\n                    \n                </form>\n\n            </div>\n        </div>\n\n</div>\n"
+module.exports = "<div [@routerTransition]>\n    <app-page-header [heading]=\"'Funcionários'\" [icon]=\"'fa-edit'\"></app-page-header>\n    \n    <div class=\"row\">\n            <div class=\"col col-xl-6 col-lg-10\">\n                <div class=\"card mb-3\">\n                    <div class=\"card-header\">\n                        {{ 'schedule.update.orders' | translate }}\n                    </div>\n                    <div class=\"card-block table-responsive\">\n                        <table class=\"table table-hover table-bordered\">\n                                <tr>\n                                    <th>Status</th>\n                                    <th>{{schedule && schedule.actived ? 'Ativo': 'Inativo'}}</th>\n                                    <th>\n                                        <button *ngIf=\"!schedule || !schedule.actived\" type=\"submit\" class=\"btn btn-info\" (click)=\"statusSchedule(true)\" >{{ 'start' | translate }}</button>\n\n                                        <button *ngIf=\"schedule && schedule.actived\" type=\"submit\" class=\"btn btn-default\" (click)=\"statusSchedule(false)\" >{{ 'stop' | translate }}</button>\n                                    </th>\n                                </tr>\n                        </table>\n                    </div>\n                </div>\n            </div>\n    </div>\n\n    <div class=\"row\">\n            <div class=\"col col-xl-6 col-lg-10\">\n                <div class=\"card mb-3\">\n                    <div class=\"card-header\">\n                        {{ 'app.version' | translate }}\n                    </div>\n                    <div class=\"card-block table-responsive\">\n                        <table class=\"table table-hover table-bordered\">\n                            <thead>\n                            <tr>\n                                <th>#</th>\n                                <th>{{ 'version' | translate }}</th>\n                                <th>{{ 'date_created' | translate }}</th>\n                            </tr>\n                            </thead>\n                            <tbody>\n                                <tr *ngFor=\"let version of versions\" >\n                                    <td>{{version.id}}</td>\n                                    <td>{{version.version}}</td>\n                                    <td>{{version.createdAt | date: 'dd/MM/yyyy HH:mm'}}</td>\n                                </tr>\n                            </tbody>\n                        </table>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-lg-4\">\n\n                <form class=\"form-horizontal\" [formGroup]=\"formulario\">\n                    <div class=\"form-group\" [ngClass]=\"aplicaCssErro('version')\" >\n                        <fieldset class=\"form-group\">\n                            <label>{{ 'version' | translate }}*</label>\n                            <input type=\"text\" class=\"form-control\"\n                                formControlName=\"version\"\n                                id=\"version\" placeholder=\"{{ 'version' | translate }}\" >\n\n                            <app-campo-control-erro\n                              [mostrarErro]=\"verificaValidTouched('version')\"\n                              msgErro=\"{{ 'version.required' | translate }}\">\n                            </app-campo-control-erro>\n                        </fieldset>\n                    </div>\n\n                    <div class=\"text-center\">\n                        <button type=\"submit\" class=\"btn btn-default\" (click)=\"reset()\" >{{ 'clear' | translate }}</button>\n                        <button type=\"submit\" [disabled]=\"!formulario.valid\" class=\"btn btn-primary\" (click)=\"register()\" >{{ 'save' | translate }}</button>\n                    </div>\n                    \n                </form>\n\n            </div>\n        </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -70,6 +70,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_app_version_service__ = __webpack_require__("../../../../../src/app/shared/services/app-version.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_geral_service__ = __webpack_require__("../../../../../src/app/shared/services/geral.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeralComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -85,21 +86,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var GeralComponent = (function () {
-    function GeralComponent(formBuilder, toastr, appVersionService) {
+    function GeralComponent(formBuilder, toastr, appVersionService, geralService) {
         var _this = this;
         this.formBuilder = formBuilder;
         this.toastr = toastr;
         this.appVersionService = appVersionService;
+        this.geralService = geralService;
         this.versions = this.appVersionService.getAll();
         if (!this.versions || !this.versions.length) {
             this.appVersionService.populate().subscribe(function (result) {
                 if (result.status) {
-                    _this.versions = result.data;
+                    _this.versions = [result.data[0], result.data[1]];
                 }
                 else {
                     _this.versions = [];
                 }
+            });
+        }
+        this.schedule = this.geralService.getSchedule();
+        if (!this.schedule || !this.schedule.status) {
+            this.geralService.getStatusSchedule().subscribe(function (result) {
+                _this.schedule = result;
             });
         }
     }
@@ -115,7 +124,8 @@ var GeralComponent = (function () {
             this.appVersionService.register(this.formulario.value)
                 .subscribe(function (result) {
                 if (result.status) {
-                    _this.versions = _this.appVersionService.getAll();
+                    var allVersions = _this.appVersionService.getAll();
+                    _this.versions = [allVersions[0], allVersions[1]];
                     _this.toastr.success(result.message, '');
                     _this.reset();
                 }
@@ -152,6 +162,19 @@ var GeralComponent = (function () {
     GeralComponent.prototype.reset = function () {
         this.formulario.reset();
     };
+    GeralComponent.prototype.statusSchedule = function (status) {
+        var _this = this;
+        if (status) {
+            this.geralService.changeStatusSchedule(false).subscribe(function (result) {
+                _this.schedule = result;
+            });
+        }
+        else {
+            this.geralService.changeStatusSchedule(true).subscribe(function (result) {
+                _this.schedule = result;
+            });
+        }
+    };
     return GeralComponent;
 }());
 GeralComponent = __decorate([
@@ -161,10 +184,10 @@ GeralComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/layout/geral/geral.component.scss")],
         animations: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__router_animations__["a" /* routerTransition */])()]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_app_version_service__["a" /* AppVersionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_app_version_service__["a" /* AppVersionService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["g" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_app_version_service__["a" /* AppVersionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_app_version_service__["a" /* AppVersionService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_geral_service__["a" /* GeralService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_geral_service__["a" /* GeralService */]) === "function" && _d || Object])
 ], GeralComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=geral.component.js.map
 
 /***/ }),

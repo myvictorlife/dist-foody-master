@@ -27,5 +27,11 @@
     "friday": "Sexta",
     "saturday": "Sábado",
     "sunday": "Domingo",
-    "example.time":"Exemplo: 10:00 a 23:00  ou  fechado"
+    "app.version":"Versão do aplicatio",
+    "example.time":"Exemplo: 10:00 a 23:00  ou  fechado",
+    "schedule.update.orders":"Programa alteração de status do pedido",
+    "actived":"Ativo",
+    "action":"Ação",
+    "start":"Iniciar",
+    "stop":"Parar"
 }

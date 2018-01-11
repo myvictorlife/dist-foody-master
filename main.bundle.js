@@ -216,6 +216,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__ = __webpack_require__("../../../../../src/app/shared/services/upload.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_services_cupon_service__ = __webpack_require__("../../../../../src/app/shared/services/cupon.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__shared_services_orders_service__ = __webpack_require__("../../../../../src/app/shared/services/orders.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__shared_services_geral_service__ = __webpack_require__("../../../../../src/app/shared/services/geral.service.ts");
 /* unused harmony export HttpLoaderFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -236,6 +237,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // AoT requires an exported function for factories
 // Services
+
 
 
 
@@ -279,7 +281,8 @@ AppModule = __decorate([
         ],
         exports: [],
         providers: [__WEBPACK_IMPORTED_MODULE_9__shared__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_10__shared_services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_11__shared_services_dashboard_service__["a" /* DashboardService */], __WEBPACK_IMPORTED_MODULE_12__shared_services_restaurant_service__["a" /* RestaurantService */], __WEBPACK_IMPORTED_MODULE_13__shared_services_category_service__["a" /* CategoryService */],
-            __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__["a" /* AppVersionService */], __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__["a" /* UploadService */], __WEBPACK_IMPORTED_MODULE_18__shared_services_cupon_service__["a" /* CuponService */], __WEBPACK_IMPORTED_MODULE_19__shared_services_orders_service__["a" /* OrdersService */]
+            __WEBPACK_IMPORTED_MODULE_14__shared_services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_15__shared_services_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_16__shared_services_app_version_service__["a" /* AppVersionService */], __WEBPACK_IMPORTED_MODULE_17__shared_services_upload_service__["a" /* UploadService */], __WEBPACK_IMPORTED_MODULE_18__shared_services_cupon_service__["a" /* CuponService */], __WEBPACK_IMPORTED_MODULE_19__shared_services_orders_service__["a" /* OrdersService */],
+            __WEBPACK_IMPORTED_MODULE_20__shared_services_geral_service__["a" /* GeralService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
     })
@@ -1218,6 +1221,99 @@ DashboardService = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=dashboard.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/services/geral.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_service__ = __webpack_require__("../../../../../src/app/shared/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_service__ = __webpack_require__("../../../../../src/app/shared/services/config.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeralService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var GeralService = (function () {
+    function GeralService(http, loginService) {
+        this.http = http;
+        this.loginService = loginService;
+        this.url = __WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url;
+        this.schedule = {};
+    }
+    GeralService.prototype.changeStatusSchedule = function (status) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        // true = deve parar
+        if (status) {
+            return this.http.get(this.url + "/schedule-stop", {
+                headers: headers
+            })
+                .map(function (res) {
+                return res.json();
+            })
+                .catch(function (error) {
+                return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+            });
+        }
+        else {
+            return this.http.get(this.url + "/schedule-start", {
+                headers: headers
+            })
+                .map(function (res) {
+                return res.json();
+            })
+                .catch(function (error) {
+                return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+            });
+        }
+    };
+    GeralService.prototype.getStatusSchedule = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(this.url + "/schedule-status", {
+            headers: headers
+        })
+            .map(function (res) {
+            return res.json();
+        })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
+    GeralService.prototype.getSchedule = function () {
+        return this.schedule;
+    };
+    GeralService.prototype.getToken = function () {
+        return this.loginService.getToken();
+    };
+    return GeralService;
+}());
+GeralService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__login_service__["a" /* LoginService */]) === "function" && _b || Object])
+], GeralService);
+
+var _a, _b;
+//# sourceMappingURL=geral.service.js.map
 
 /***/ }),
 
