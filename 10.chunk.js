@@ -227,7 +227,7 @@ var GeralComponent = (function () {
     };
     // Pega horario e minutos de abertura, horario e minutos que fechamento o restaurante
     GeralComponent.prototype.getDateRestaurantCurrent = function (value) {
-        if (value === 'FECHADO') {
+        if (value === 'FECHADO' || value === 'fechado') {
             return false;
         }
         var date = value.split(" ");
