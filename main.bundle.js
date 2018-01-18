@@ -1607,6 +1607,7 @@ var RestaurantService = (function () {
         this.http = http;
         this.loginService = loginService;
         this.restaurants = [];
+        this.restaurantsWithTime = [];
         this.populate().subscribe(function (result) {
             _this.restaurants = result.data;
         });
@@ -1654,6 +1655,21 @@ var RestaurantService = (function () {
                     _this.restaurants[i] = res.json().data;
                 }
             }
+            return res.json();
+        })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
+    RestaurantService.prototype.findAllWithTime = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]();
+        headers.append('authorization', this.getToken());
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__config_service__["a" /* CONFIG */].url + "/restaurant/time", {
+            headers: headers
+        })
+            .map(function (res) {
+            _this.restaurantsWithTime = res.json().data;
             return res.json();
         })
             .catch(function (error) {
