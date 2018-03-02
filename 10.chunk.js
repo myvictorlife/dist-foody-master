@@ -108,6 +108,9 @@ var GeralComponent = (function () {
                 }
             });
         }
+        else {
+            this.versions = [this.versions[0], this.versions[1]];
+        }
         this.schedule = this.geralService.getSchedule();
         if (!this.schedule || !this.schedule.status) {
             this.geralService.getStatusSchedule().subscribe(function (result) {

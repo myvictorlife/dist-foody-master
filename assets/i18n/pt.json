@@ -34,5 +34,16 @@
     "action":"Ação",
     "start":"Iniciar",
     "stop":"Parar",
-    "time":"Horário"
+    "time":"Horário",
+    "orders.detail":"Ver pedido",
+    "form.payment":"Forma de Pagamento",
+    "deliver":"Entregar",
+    "frete":"Frete",
+    "discount":"Desconto",
+    "closed":"Fechar",
+    "email":"Email",
+    "phone":"Telefone",
+    "orders":"Pedidos",
+    "change.status":"Mudar",
+    "expiration":"Data expiração"
 }
