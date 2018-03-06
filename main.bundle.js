@@ -1014,8 +1014,7 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONFIG; });
 let CONFIG = {
-    //url: "https://prod.saciafome.com"
-    url: "https://prod.uaifoody.com"
+    url: "https://prod.saciafome.com"
     //url: "http://localhost:8000"
     //url: "http://dev-saciafome-com.umbler.net"
     //url: "https://dev.saciafome.com"
