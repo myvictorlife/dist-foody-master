@@ -475,18 +475,71 @@ RestaurantModule = __decorate([
 
 /***/ }),
 
+/***/ "../../../../angular-2-dropdown-multiselect/dropdown/autofocus.directive.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AutofocusDirective; });
+
+var AutofocusDirective = (function () {
+    function AutofocusDirective(elemRef) {
+        this.elemRef = elemRef;
+    }
+    Object.defineProperty(AutofocusDirective.prototype, "element", {
+        get: function () {
+            return this.elemRef.nativeElement;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AutofocusDirective.prototype.ngOnInit = function () {
+        this.focus();
+    };
+    AutofocusDirective.prototype.ngOnChanges = function (changes) {
+        var ssAutofocusChange = changes.ssAutofocus;
+        if (ssAutofocusChange && !ssAutofocusChange.isFirstChange()) {
+            this.focus();
+        }
+    };
+    AutofocusDirective.prototype.focus = function () {
+        if (this.ssAutofocus) {
+            return;
+        }
+        this.element.focus && this.element.focus();
+    };
+    return AutofocusDirective;
+}());
+
+AutofocusDirective.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Directive */], args: [{
+                selector: '[ssAutofocus]'
+            },] },
+];
+/** @nocollapse */
+AutofocusDirective.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* ElementRef */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Host */] },] },
+]; };
+AutofocusDirective.propDecorators = {
+    'ssAutofocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Input */] },],
+};
+//# sourceMappingURL=autofocus.directive.js.map
+
+/***/ }),
+
 /***/ "../../../../angular-2-dropdown-multiselect/dropdown/dropdown.component.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_takeUntil__ = __webpack_require__("../../../../rxjs/add/operator/takeUntil.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_takeUntil___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_takeUntil__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_filter_pipe__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/search-filter.pipe.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MultiselectDropdown; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__("../../../../tslib/tslib.es6.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_takeUntil__ = __webpack_require__("../../../../rxjs/add/operator/takeUntil.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_takeUntil___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_takeUntil__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__search_filter_pipe__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/search-filter.pipe.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MultiselectDropdownComponent; });
 
 
 
@@ -500,30 +553,38 @@ RestaurantModule = __decorate([
  * https://github.com/softsimon/angular-2-dropdown-multiselect
  */
 var MULTISELECT_VALUE_ACCESSOR = {
-    provide: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* NG_VALUE_ACCESSOR */],
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* forwardRef */])(function () { return MultiselectDropdown; }),
-    multi: true
+    provide: __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* NG_VALUE_ACCESSOR */],
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_13" /* forwardRef */])(function () { return MultiselectDropdownComponent; }),
+    multi: true,
 };
-var MultiselectDropdown = (function () {
-    function MultiselectDropdown(element, fb, searchFilter, differs) {
+var MultiselectDropdownComponent = (function () {
+    function MultiselectDropdownComponent(element, fb, searchFilter, differs, cdRef) {
         this.element = element;
         this.fb = fb;
         this.searchFilter = searchFilter;
+        this.cdRef = cdRef;
         this.filterControl = this.fb.control('');
         this.disabled = false;
-        this.selectionLimitReached = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* EventEmitter */]();
-        this.dropdownClosed = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* EventEmitter */]();
-        this.dropdownOpened = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* EventEmitter */]();
-        this.onAdded = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* EventEmitter */]();
-        this.onRemoved = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* EventEmitter */]();
-        this.onLazyLoad = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* EventEmitter */]();
+        this.disabledSelection = false;
+        this.selectionLimitReached = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["t" /* EventEmitter */]();
+        this.dropdownClosed = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["t" /* EventEmitter */]();
+        this.dropdownOpened = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["t" /* EventEmitter */]();
+        this.onAdded = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["t" /* EventEmitter */]();
+        this.onRemoved = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["t" /* EventEmitter */]();
+        this.onLazyLoad = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["t" /* EventEmitter */]();
         this.onFilter = this.filterControl.valueChanges;
-        this.destroyed$ = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
+        this.destroyed$ = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["Subject"]();
         this.filteredOptions = [];
+        this.lazyLoadOptions = [];
         this.renderFilteredOptions = [];
         this.model = [];
+        this.prevModel = [];
         this.numSelected = 0;
         this.renderItems = true;
+        this.checkAllSearchRegister = new Set();
+        this.checkAllStatus = false;
+        this.loadedValueIds = [];
+        this._focusBack = false;
         this.defaultSettings = {
             closeOnClickOutside: true,
             pullRight: false,
@@ -533,7 +594,7 @@ var MultiselectDropdown = (function () {
             searchMaxLimit: 0,
             searchMaxRenderedItems: 0,
             checkedStyle: 'checkboxes',
-            buttonClasses: 'btn btn-default btn-secondary',
+            buttonClasses: 'btn btn-primary dropdown-toggle',
             containerClasses: 'dropdown-inline',
             selectionLimit: 0,
             minSelectionLimit: 0,
@@ -546,7 +607,11 @@ var MultiselectDropdown = (function () {
             maxHeight: '300px',
             isLazyLoad: false,
             stopScrollPropagation: false,
-            loadViewDistance: 1
+            loadViewDistance: 1,
+            selectAddedValues: false,
+            ignoreLabels: false,
+            maintainSelectionOrderInTitle: false,
+            focusBack: true
         };
         this.defaultTexts = {
             checkAll: 'Check all',
@@ -567,9 +632,17 @@ var MultiselectDropdown = (function () {
         this.settings = this.defaultSettings;
         this.texts = this.defaultTexts;
     }
-    MultiselectDropdown.prototype.onClick = function (target) {
-        if (!this.isVisible || !this.settings.closeOnClickOutside)
+    Object.defineProperty(MultiselectDropdownComponent.prototype, "focusBack", {
+        get: function () {
+            return this.settings.focusBack && this._focusBack;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MultiselectDropdownComponent.prototype.onClick = function (target) {
+        if (!this.isVisible || !this.settings.closeOnClickOutside) {
             return;
+        }
         var parentFound = false;
         while (target != null && !parentFound) {
             if (target === this.element.nativeElement) {
@@ -579,10 +652,11 @@ var MultiselectDropdown = (function () {
         }
         if (!parentFound) {
             this.isVisible = false;
+            this._focusBack = true;
             this.dropdownClosed.emit();
         }
     };
-    Object.defineProperty(MultiselectDropdown.prototype, "isVisible", {
+    Object.defineProperty(MultiselectDropdownComponent.prototype, "isVisible", {
         get: function () {
             return this._isVisible;
         },
@@ -593,238 +667,358 @@ var MultiselectDropdown = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(MultiselectDropdown.prototype, "searchLimit", {
+    Object.defineProperty(MultiselectDropdownComponent.prototype, "searchLimit", {
         get: function () {
             return this.settings.searchRenderLimit;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(MultiselectDropdown.prototype, "searchRenderAfter", {
+    Object.defineProperty(MultiselectDropdownComponent.prototype, "searchRenderAfter", {
         get: function () {
             return this.settings.searchRenderAfter;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(MultiselectDropdown.prototype, "searchLimitApplied", {
+    Object.defineProperty(MultiselectDropdownComponent.prototype, "searchLimitApplied", {
         get: function () {
             return this.searchLimit > 0 && this.options.length > this.searchLimit;
         },
         enumerable: true,
         configurable: true
     });
-    MultiselectDropdown.prototype.getItemStyle = function (option) {
+    MultiselectDropdownComponent.prototype.getItemStyle = function (option) {
+        var style = {};
         if (!option.isLabel) {
-            return { 'cursor': 'pointer' };
+            style['cursor'] = 'pointer';
+        }
+        if (option.disabled) {
+            style['cursor'] = 'default';
         }
     };
-    MultiselectDropdown.prototype.getItemStyleSelectionDisabled = function () {
+    MultiselectDropdownComponent.prototype.getItemStyleSelectionDisabled = function () {
         if (this.disabledSelection) {
-            return { 'cursor': 'default' };
+            return { cursor: 'default' };
         }
     };
-    MultiselectDropdown.prototype.ngOnInit = function () {
-        this.settings = Object.assign(this.defaultSettings, this.settings);
-        this.texts = Object.assign(this.defaultTexts, this.texts);
+    MultiselectDropdownComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.title = this.texts.defaultTitle || '';
-        this.filterControl.valueChanges
-            .takeUntil(this.destroyed$)
-            .subscribe(function () {
-            this.updateRenderItems();
-            if (this.settings.isLazyLoad) {
-                this.load();
+        this.filterControl.valueChanges.takeUntil(this.destroyed$).subscribe(function () {
+            _this.updateRenderItems();
+            if (_this.settings.isLazyLoad) {
+                _this.load();
             }
-        }.bind(this));
+        });
     };
-    MultiselectDropdown.prototype.ngOnChanges = function (changes) {
+    MultiselectDropdownComponent.prototype.ngOnChanges = function (changes) {
+        var _this = this;
         if (changes['options']) {
             this.options = this.options || [];
             this.parents = this.options
                 .filter(function (option) { return typeof option.parentId === 'number'; })
                 .map(function (option) { return option.parentId; });
             this.updateRenderItems();
+            if (this.settings.isLazyLoad &&
+                this.settings.selectAddedValues &&
+                this.loadedValueIds.length === 0) {
+                this.loadedValueIds = this.loadedValueIds.concat(changes.options.currentValue.map(function (value) { return value.id; }));
+            }
+            if (this.settings.isLazyLoad &&
+                this.settings.selectAddedValues &&
+                changes.options.previousValue) {
+                var addedValues_1 = changes.options.currentValue.filter(function (value) { return _this.loadedValueIds.indexOf(value.id) === -1; });
+                this.loadedValueIds.concat(addedValues_1.map(function (value) { return value.id; }));
+                if (this.checkAllStatus) {
+                    this.addChecks(addedValues_1);
+                }
+                else if (this.checkAllSearchRegister.size > 0) {
+                    this.checkAllSearchRegister.forEach(function (searchValue) {
+                        return _this.addChecks(_this.applyFilters(addedValues_1, searchValue));
+                    });
+                }
+            }
             if (this.texts) {
                 this.updateTitle();
             }
+            this.fireModelChange();
         }
-        if (changes['texts'] && !changes['texts'].isFirstChange()) {
-            this.updateTitle();
+        if (changes['settings']) {
+            this.settings = __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __assign */]({}, this.defaultSettings, this.settings);
+        }
+        if (changes['texts']) {
+            this.texts = __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __assign */]({}, this.defaultTexts, this.texts);
+            if (!changes['texts'].isFirstChange()) {
+                this.updateTitle();
+            }
         }
     };
-    MultiselectDropdown.prototype.ngOnDestroy = function () {
+    MultiselectDropdownComponent.prototype.ngOnDestroy = function () {
         this.destroyed$.next();
     };
-    MultiselectDropdown.prototype.updateRenderItems = function () {
-        this.renderItems = !this.searchLimitApplied || this.filterControl.value.length >= this.searchRenderAfter;
-        this.filteredOptions = this.searchFilter.transform(this.options, this.settings.isLazyLoad ? '' : this.filterControl.value, this.settings.searchMaxLimit, this.settings.searchMaxRenderedItems);
+    MultiselectDropdownComponent.prototype.updateRenderItems = function () {
+        this.renderItems =
+            !this.searchLimitApplied ||
+                this.filterControl.value.length >= this.searchRenderAfter;
+        this.filteredOptions = this.applyFilters(this.options, this.settings.isLazyLoad ? '' : this.filterControl.value);
         this.renderFilteredOptions = this.renderItems ? this.filteredOptions : [];
+        this.focusedItem = undefined;
     };
-    MultiselectDropdown.prototype.writeValue = function (value) {
+    MultiselectDropdownComponent.prototype.applyFilters = function (options, value) {
+        return this.searchFilter.transform(options, value, this.settings.searchMaxLimit, this.settings.searchMaxRenderedItems);
+    };
+    MultiselectDropdownComponent.prototype.fireModelChange = function () {
+        if (this.model != this.prevModel) {
+            this.prevModel = this.model;
+            this.onModelChange(this.model);
+            this.onModelTouched();
+        }
+    };
+    MultiselectDropdownComponent.prototype.writeValue = function (value) {
         if (value !== undefined && value !== null) {
             this.model = Array.isArray(value) ? value : [value];
+            this.ngDoCheck();
         }
         else {
             this.model = [];
         }
     };
-    MultiselectDropdown.prototype.registerOnChange = function (fn) {
+    MultiselectDropdownComponent.prototype.registerOnChange = function (fn) {
         this.onModelChange = fn;
     };
-    MultiselectDropdown.prototype.registerOnTouched = function (fn) {
+    MultiselectDropdownComponent.prototype.registerOnTouched = function (fn) {
         this.onModelTouched = fn;
     };
-    MultiselectDropdown.prototype.setDisabledState = function (isDisabled) {
+    MultiselectDropdownComponent.prototype.setDisabledState = function (isDisabled) {
         this.disabled = isDisabled;
     };
-    MultiselectDropdown.prototype.ngDoCheck = function () {
+    MultiselectDropdownComponent.prototype.ngDoCheck = function () {
         var changes = this.differ.diff(this.model);
         if (changes) {
             this.updateNumSelected();
             this.updateTitle();
         }
     };
-    MultiselectDropdown.prototype.validate = function (_c) {
-        return (this.model && this.model.length) ? null : {
-            required: {
-                valid: false,
-            },
-        };
+    MultiselectDropdownComponent.prototype.validate = function (_c) {
+        var _this = this;
+        if (this.model && this.model.length) {
+            return {
+                required: {
+                    valid: false
+                }
+            };
+        }
+        if (this.options.filter(function (o) { return _this.model.indexOf(o.id) && !o.disabled; }).length === 0) {
+            return {
+                selection: {
+                    valid: false
+                }
+            };
+        }
+        return null;
     };
-    MultiselectDropdown.prototype.registerOnValidatorChange = function (_fn) {
+    MultiselectDropdownComponent.prototype.registerOnValidatorChange = function (_fn) {
         throw new Error('Method not implemented.');
     };
-    MultiselectDropdown.prototype.clearSearch = function (event) {
-        if (event.stopPropagation) {
-            event.stopPropagation();
-        }
+    MultiselectDropdownComponent.prototype.clearSearch = function (event) {
+        this.maybeStopPropagation(event);
         this.filterControl.setValue('');
     };
-    MultiselectDropdown.prototype.toggleDropdown = function () {
+    MultiselectDropdownComponent.prototype.toggleDropdown = function (e) {
+        this.maybeStopPropagation(e);
+        if (this.isVisible) {
+            this._focusBack = true;
+        }
         this.isVisible = !this.isVisible;
         this.isVisible ? this.dropdownOpened.emit() : this.dropdownClosed.emit();
+        this.focusedItem = undefined;
     };
-    MultiselectDropdown.prototype.isSelected = function (option) {
+    MultiselectDropdownComponent.prototype.closeDropdown = function (e) {
+        this.isVisible = true;
+        this.toggleDropdown(e);
+    };
+    MultiselectDropdownComponent.prototype.isSelected = function (option) {
         return this.model && this.model.indexOf(option.id) > -1;
     };
-    MultiselectDropdown.prototype.setSelected = function (_event, option) {
+    MultiselectDropdownComponent.prototype.setSelected = function (_event, option) {
         var _this = this;
         if (option.isLabel) {
             return;
         }
+        if (option.disabled) {
+            return;
+        }
         if (!this.disabledSelection) {
-            if (_event.stopPropagation) {
-                _event.stopPropagation();
-            }
+            this.maybeStopPropagation(_event);
+            this.maybePreventDefault(_event);
             var index = this.model.indexOf(option.id);
+            var isAtSelectionLimit = this.settings.selectionLimit > 0 &&
+                this.model.length >= this.settings.selectionLimit;
+            var removeItem_1 = function (idx, id) {
+                _this.model.splice(idx, 1);
+                _this.onRemoved.emit(id);
+                if (_this.settings.isLazyLoad &&
+                    _this.lazyLoadOptions.some(function (val) { return val.id === id; })) {
+                    _this.lazyLoadOptions.splice(_this.lazyLoadOptions.indexOf(_this.lazyLoadOptions.find(function (val) { return val.id === id; })), 1);
+                }
+            };
             if (index > -1) {
-                if ((this.settings.minSelectionLimit === undefined) || (this.numSelected > this.settings.minSelectionLimit)) {
-                    this.model.splice(index, 1);
-                    this.onRemoved.emit(option.id);
+                if (this.settings.minSelectionLimit === undefined ||
+                    this.numSelected > this.settings.minSelectionLimit) {
+                    removeItem_1(index, option.id);
                 }
                 var parentIndex = option.parentId && this.model.indexOf(option.parentId);
-                if (parentIndex >= 0) {
-                    this.model.splice(parentIndex, 1);
-                    this.onRemoved.emit(option.parentId);
+                if (parentIndex > -1) {
+                    removeItem_1(parentIndex, option.parentId);
                 }
                 else if (this.parents.indexOf(option.id) > -1) {
-                    var childIds_1 = this.options.filter(function (child) { return _this.model.indexOf(child.id) > -1 && child.parentId == option.id; }).map(function (child) { return child.id; });
-                    this.model = this.model.filter(function (id) { return childIds_1.indexOf(id) < 0; });
-                    childIds_1.forEach(function (childId) { return _this.onRemoved.emit(childId); });
+                    this.options
+                        .filter(function (child) {
+                        return _this.model.indexOf(child.id) > -1 &&
+                            child.parentId === option.id;
+                    })
+                        .forEach(function (child) {
+                        return removeItem_1(_this.model.indexOf(child.id), child.id);
+                    });
                 }
             }
+            else if (isAtSelectionLimit && !this.settings.autoUnselect) {
+                this.selectionLimitReached.emit(this.model.length);
+                return;
+            }
             else {
-                if (this.settings.selectionLimit === 0 || (this.settings.selectionLimit && this.model.length < this.settings.selectionLimit)) {
-                    this.model.push(option.id);
-                    this.onAdded.emit(option.id);
-                    if (option.parentId) {
-                        var children = this.options.filter(function (child) { return child.id !== option.id && child.parentId == option.parentId; });
+                var addItem_1 = function (id) {
+                    _this.model.push(id);
+                    _this.onAdded.emit(id);
+                    if (_this.settings.isLazyLoad &&
+                        !_this.lazyLoadOptions.some(function (val) { return val.id === id; })) {
+                        _this.lazyLoadOptions.push(option);
+                    }
+                };
+                addItem_1(option.id);
+                if (!isAtSelectionLimit) {
+                    if (option.parentId && !this.settings.ignoreLabels) {
+                        var children = this.options.filter(function (child) {
+                            return child.id !== option.id && child.parentId === option.parentId;
+                        });
                         if (children.every(function (child) { return _this.model.indexOf(child.id) > -1; })) {
-                            this.model.push(option.parentId);
-                            this.onAdded.emit(option.parentId);
+                            addItem_1(option.parentId);
                         }
                     }
                     else if (this.parents.indexOf(option.id) > -1) {
-                        var children = this.options.filter(function (child) { return _this.model.indexOf(child.id) < 0 && child.parentId == option.id; });
-                        children.forEach(function (child) {
-                            _this.model.push(child.id);
-                            _this.onAdded.emit(child.id);
+                        var children = this.options.filter(function (child) {
+                            return _this.model.indexOf(child.id) < 0 && child.parentId === option.id;
                         });
+                        children.forEach(function (child) { return addItem_1(child.id); });
                     }
                 }
                 else {
-                    if (this.settings.autoUnselect) {
-                        this.model.push(option.id);
-                        this.onAdded.emit(option.id);
-                        var removedOption = this.model.shift();
-                        this.onRemoved.emit(removedOption);
-                    }
-                    else {
-                        this.selectionLimitReached.emit(this.model.length);
-                        return;
-                    }
+                    removeItem_1(0, this.model[0]);
                 }
             }
             if (this.settings.closeOnSelect) {
                 this.toggleDropdown();
             }
             this.model = this.model.slice();
-            this.onModelChange(this.model);
-            this.onModelTouched();
+            this.fireModelChange();
         }
     };
-    MultiselectDropdown.prototype.updateNumSelected = function () {
+    MultiselectDropdownComponent.prototype.updateNumSelected = function () {
         var _this = this;
-        this.numSelected = this.model.filter(function (id) { return _this.parents.indexOf(id) < 0; }).length || 0;
+        this.numSelected =
+            this.model.filter(function (id) { return _this.parents.indexOf(id) < 0; }).length || 0;
     };
-    MultiselectDropdown.prototype.updateTitle = function () {
+    MultiselectDropdownComponent.prototype.updateTitle = function () {
         var _this = this;
+        var numSelectedOptions = this.options.length;
+        if (this.settings.ignoreLabels) {
+            numSelectedOptions = this.options.filter(function (option) { return !option.isLabel; }).length;
+        }
         if (this.numSelected === 0 || this.settings.fixedTitle) {
-            this.title = (this.texts) ? this.texts.defaultTitle : '';
+            this.title = this.texts ? this.texts.defaultTitle : '';
         }
-        else if (this.settings.displayAllSelectedText && this.model.length === this.options.length) {
-            this.title = (this.texts) ? this.texts.allSelected : '';
+        else if (this.settings.displayAllSelectedText &&
+            this.model.length === numSelectedOptions) {
+            this.title = this.texts ? this.texts.allSelected : '';
         }
-        else if (this.settings.dynamicTitleMaxItems && this.settings.dynamicTitleMaxItems >= this.numSelected) {
-            this.title = this.options
-                .filter(function (option) {
-                return _this.model.indexOf(option.id) > -1;
-            })
-                .map(function (option) { return option.name; })
-                .join(', ');
+        else if (this.settings.dynamicTitleMaxItems &&
+            this.settings.dynamicTitleMaxItems >= this.numSelected) {
+            var useOptions_1 = this.settings.isLazyLoad && this.lazyLoadOptions.length
+                ? this.lazyLoadOptions
+                : this.options;
+            var titleSelections = void 0;
+            if (this.settings.maintainSelectionOrderInTitle) {
+                var optionIds_1 = useOptions_1.map(function (selectOption, idx) { return selectOption.id; });
+                titleSelections = this.model
+                    .map(function (selectedId) { return optionIds_1.indexOf(selectedId); })
+                    .filter(function (optionIndex) { return optionIndex > -1; })
+                    .map(function (optionIndex) { return useOptions_1[optionIndex]; });
+            }
+            else {
+                titleSelections = useOptions_1.filter(function (option) { return _this.model.indexOf(option.id) > -1; });
+            }
+            this.title = titleSelections.map(function (option) { return option.name; }).join(', ');
         }
         else {
-            this.title = this.numSelected
-                + ' '
-                + (this.numSelected === 1 ? this.texts.checked : this.texts.checkedPlural);
+            this.title =
+                this.numSelected +
+                    ' ' +
+                    (this.numSelected === 1
+                        ? this.texts.checked
+                        : this.texts.checkedPlural);
         }
+        this.cdRef.markForCheck();
     };
-    MultiselectDropdown.prototype.searchFilterApplied = function () {
-        return this.settings.enableSearch && this.filterControl.value && this.filterControl.value.length > 0;
+    MultiselectDropdownComponent.prototype.searchFilterApplied = function () {
+        return (this.settings.enableSearch &&
+            this.filterControl.value &&
+            this.filterControl.value.length > 0);
     };
-    MultiselectDropdown.prototype.checkAll = function () {
+    MultiselectDropdownComponent.prototype.addChecks = function (options) {
         var _this = this;
+        var checkedOptions = options
+            .filter(function (option) {
+            if (!option.disabled &&
+                (_this.model.indexOf(option.id) === -1 &&
+                    !(_this.settings.ignoreLabels && option.isLabel))) {
+                _this.onAdded.emit(option.id);
+                return true;
+            }
+            return false;
+        })
+            .map(function (option) { return option.id; });
+        this.model = this.model.concat(checkedOptions);
+    };
+    MultiselectDropdownComponent.prototype.checkAll = function () {
         if (!this.disabledSelection) {
-            var checkedOptions = (!this.searchFilterApplied() ? this.options : this.filteredOptions)
-                .filter(function (option) {
-                if (_this.model.indexOf(option.id) === -1) {
-                    _this.onAdded.emit(option.id);
-                    return true;
+            this.addChecks(!this.searchFilterApplied() ? this.options : this.filteredOptions);
+            if (this.settings.isLazyLoad && this.settings.selectAddedValues) {
+                if (this.searchFilterApplied() && !this.checkAllStatus) {
+                    this.checkAllSearchRegister.add(this.filterControl.value);
                 }
-                return false;
-            }).map(function (option) { return option.id; });
-            this.model = this.model.concat(checkedOptions);
-            this.onModelChange(this.model);
-            this.onModelTouched();
+                else {
+                    this.checkAllSearchRegister.clear();
+                    this.checkAllStatus = true;
+                }
+                this.load();
+            }
+            this.fireModelChange();
         }
     };
-    MultiselectDropdown.prototype.uncheckAll = function () {
+    MultiselectDropdownComponent.prototype.uncheckAll = function () {
         var _this = this;
         if (!this.disabledSelection) {
-            var unCheckedOptions_1 = (!this.searchFilterApplied() ? this.model
-                : this.filteredOptions.map(function (option) { return option.id; }));
+            var checkedOptions = this.model;
+            var unCheckedOptions_1 = !this.searchFilterApplied()
+                ? this.model
+                : this.filteredOptions.map(function (option) { return option.id; });
+            // set unchecked options only to the ones that were checked
+            unCheckedOptions_1 = checkedOptions.filter(function (item) { return _this.model.indexOf(item) > -1; });
             this.model = this.model.filter(function (id) {
-                if (((unCheckedOptions_1.indexOf(id) < 0) && (_this.settings.minSelectionLimit === undefined)) || ((unCheckedOptions_1.indexOf(id) < _this.settings.minSelectionLimit))) {
+                if ((unCheckedOptions_1.indexOf(id) < 0 &&
+                    _this.settings.minSelectionLimit === undefined) ||
+                    unCheckedOptions_1.indexOf(id) < _this.settings.minSelectionLimit) {
                     return true;
                 }
                 else {
@@ -832,79 +1026,134 @@ var MultiselectDropdown = (function () {
                     return false;
                 }
             });
-            this.onModelChange(this.model);
-            this.onModelTouched();
+            if (this.settings.isLazyLoad && this.settings.selectAddedValues) {
+                if (this.searchFilterApplied()) {
+                    if (this.checkAllSearchRegister.has(this.filterControl.value)) {
+                        this.checkAllSearchRegister.delete(this.filterControl.value);
+                        this.checkAllSearchRegister.forEach(function (searchTerm) {
+                            var filterOptions = this.applyFilters(this.options.filter(function (option) { return unCheckedOptions_1.indexOf(option.id) > -1; }), searchTerm);
+                            this.addChecks(filterOptions);
+                        });
+                    }
+                }
+                else {
+                    this.checkAllSearchRegister.clear();
+                    this.checkAllStatus = false;
+                }
+                this.load();
+            }
+            this.fireModelChange();
         }
     };
-    MultiselectDropdown.prototype.preventCheckboxCheck = function (event, option) {
-        if (this.settings.selectionLimit && !this.settings.autoUnselect &&
-            this.model.length >= this.settings.selectionLimit &&
-            this.model.indexOf(option.id) === -1 &&
-            event.preventDefault) {
-            event.preventDefault();
+    MultiselectDropdownComponent.prototype.preventCheckboxCheck = function (event, option) {
+        if (option.disabled ||
+            (this.settings.selectionLimit &&
+                !this.settings.autoUnselect &&
+                this.model.length >= this.settings.selectionLimit &&
+                this.model.indexOf(option.id) === -1 &&
+                this.maybePreventDefault(event))) {
+            this.maybePreventDefault(event);
         }
     };
-    MultiselectDropdown.prototype.isCheckboxDisabled = function () {
-        return this.disabledSelection;
+    MultiselectDropdownComponent.prototype.isCheckboxDisabled = function (option) {
+        return this.disabledSelection || option.disabled;
     };
-    MultiselectDropdown.prototype.checkScrollPosition = function (ev) {
+    MultiselectDropdownComponent.prototype.checkScrollPosition = function (ev) {
         var scrollTop = ev.target.scrollTop;
         var scrollHeight = ev.target.scrollHeight;
         var scrollElementHeight = ev.target.clientHeight;
         var roundingPixel = 1;
         var gutterPixel = 1;
-        if (scrollTop >= scrollHeight - (1 + this.settings.loadViewDistance) * scrollElementHeight - roundingPixel - gutterPixel) {
+        if (scrollTop >=
+            scrollHeight -
+                (1 + this.settings.loadViewDistance) * scrollElementHeight -
+                roundingPixel -
+                gutterPixel) {
             this.load();
         }
     };
-    MultiselectDropdown.prototype.checkScrollPropagation = function (ev, element) {
+    MultiselectDropdownComponent.prototype.checkScrollPropagation = function (ev, element) {
         var scrollTop = element.scrollTop;
         var scrollHeight = element.scrollHeight;
         var scrollElementHeight = element.clientHeight;
-        if ((ev.deltaY > 0 && scrollTop + scrollElementHeight >= scrollHeight) || (ev.deltaY < 0 && scrollTop <= 0)) {
+        if ((ev.deltaY > 0 && scrollTop + scrollElementHeight >= scrollHeight) ||
+            (ev.deltaY < 0 && scrollTop <= 0)) {
             ev = ev || window.event;
-            ev.preventDefault && ev.preventDefault();
+            this.maybePreventDefault(ev);
             ev.returnValue = false;
         }
     };
-    MultiselectDropdown.prototype.load = function () {
+    MultiselectDropdownComponent.prototype.trackById = function (idx, selectOption) {
+        return selectOption.id;
+    };
+    MultiselectDropdownComponent.prototype.load = function () {
         this.onLazyLoad.emit({
             length: this.options.length,
-            filter: this.filterControl.value
+            filter: this.filterControl.value,
+            checkAllSearches: this.checkAllSearchRegister,
+            checkAllStatus: this.checkAllStatus,
         });
     };
-    return MultiselectDropdown;
+    MultiselectDropdownComponent.prototype.focusItem = function (dir, e) {
+        if (!this.isVisible) {
+            return;
+        }
+        this.maybePreventDefault(e);
+        var idx = this.filteredOptions.indexOf(this.focusedItem);
+        if (idx === -1) {
+            this.focusedItem = this.filteredOptions[0];
+            return;
+        }
+        var nextIdx = idx + dir;
+        var newIdx = nextIdx < 0
+            ? this.filteredOptions.length - 1
+            : nextIdx % this.filteredOptions.length;
+        this.focusedItem = this.filteredOptions[newIdx];
+    };
+    MultiselectDropdownComponent.prototype.maybePreventDefault = function (e) {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
+    };
+    MultiselectDropdownComponent.prototype.maybeStopPropagation = function (e) {
+        if (e && e.stopPropagation) {
+            e.stopPropagation();
+        }
+    };
+    return MultiselectDropdownComponent;
 }());
 
-MultiselectDropdown.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Component */], args: [{
+MultiselectDropdownComponent.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["d" /* Component */], args: [{
                 selector: 'ss-multiselect-dropdown',
-                template: '<div class="dropdown" [ngClass]="settings.containerClasses" [class.open]="isVisible"><button type="button" class="dropdown-toggle" [ngClass]="settings.buttonClasses" (click)="toggleDropdown()" [disabled]="disabled">{{ title }}<span class="caret"></span></button><ul #scroller *ngIf="isVisible" class="dropdown-menu" (scroll)="settings.isLazyLoad ? checkScrollPosition($event) : null" (wheel)="settings.stopScrollPropagation ? checkScrollPropagation($event, scroller) : null" [class.pull-right]="settings.pullRight" [class.dropdown-menu-right]="settings.pullRight" [style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto"><li class="dropdown-item search" *ngIf="settings.enableSearch"><div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3"><i class="fa fa-search"></i></span> <input type="text" class="form-control" placeholder="{{ texts.searchPlaceholder }}" aria-describedby="sizing-addon3" [formControl]="filterControl" autofocus> <span class="input-group-btn" *ngIf="filterControl.value.length > 0"><button class="btn btn-default btn-secondary" type="button" (click)="clearSearch($event)"><i class="fa fa-times"></i></button></span></div></li><li class="dropdown-divider divider" *ngIf="settings.enableSearch"></li><li class="dropdown-item check-control check-control-check" *ngIf="settings.showCheckAll && !disabledSelection"><a href="javascript:;" role="menuitem" tabindex="-1" (click)="checkAll()"><span style="width: 16px" [ngClass]="{\'glyphicon glyphicon-ok\': settings.checkedStyle !== \'fontawesome\',\'fa fa-check\': settings.checkedStyle === \'fontawesome\'}"></span> {{ texts.checkAll }}</a></li><li class="dropdown-item check-control check-control-uncheck" *ngIf="settings.showUncheckAll && !disabledSelection"><a href="javascript:;" role="menuitem" tabindex="-1" (click)="uncheckAll()"><span style="width: 16px" [ngClass]="{\'glyphicon glyphicon-remove\': settings.checkedStyle !== \'fontawesome\',\'fa fa-times\': settings.checkedStyle === \'fontawesome\'}"></span> {{ texts.uncheckAll }}</a></li><li *ngIf="settings.showCheckAll || settings.showUncheckAll" class="dropdown-divider divider"></li><li *ngIf="!renderItems" class="dropdown-item empty">{{ texts.searchNoRenderText }}</li><li *ngIf="renderItems && !renderFilteredOptions.length" class="dropdown-item empty">{{ texts.searchEmptyResult }}</li><li class="dropdown-item" *ngFor="let option of renderFilteredOptions" (click)="setSelected($event, option)" [ngStyle]="getItemStyle(option)" [ngClass]="option.classes" [class.dropdown-header]="option.isLabel"><a *ngIf="!option.isLabel; else label" href="javascript:;" role="menuitem" tabindex="-1" [style.padding-left]="this.parents.length>0&&this.parents.indexOf(option.id)<0&&\'30px\'" [ngStyle]="getItemStyleSelectionDisabled()"><ng-container [ngSwitch]="settings.checkedStyle"><input *ngSwitchCase="\'checkboxes\'" type="checkbox" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event, option)" [disabled]="isCheckboxDisabled()" [ngStyle]="getItemStyleSelectionDisabled()" > <span *ngSwitchCase="\'glyphicon\'" style="width: 16px" class="glyphicon" [class.glyphicon-ok]="isSelected(option)"></span> <span *ngSwitchCase="\'fontawesome\'" style="width: 16px;display: inline-block"><i *ngIf="isSelected(option)" class="fa fa-check" aria-hidden="true"></i></span></ng-container><span [ngClass]="settings.itemClasses" [style.font-weight]="this.parents.indexOf(option.id)>=0?\'bold\':\'normal\'">{{ option.name }}</span></a><ng-template #label>{{ option.name }}</ng-template></li></ul></div>',
-                styles: ['a {  outline: none !important;}.dropdown-inline {  display: inline-block;}.dropdown-toggle .caret {  margin-left: 4px;  white-space: nowrap;  display: inline-block;}'],
-                providers: [MULTISELECT_VALUE_ACCESSOR, __WEBPACK_IMPORTED_MODULE_4__search_filter_pipe__["a" /* MultiSelectSearchFilter */]]
+                template: '<div class="dropdown"><button type="button" class="dropdown-toggle" [ngClass]="settings.buttonClasses" (click)="toggleDropdown($event)" [disabled]="disabled" [ssAutofocus]="!focusBack">{{ title }} <span class="caret"></span></button><div #scroller *ngIf="isVisible" class="dropdown-menu" [ngClass]="{\'chunkydropdown-menu\': settings.checkedStyle == \'visual\' }" (scroll)="settings.isLazyLoad ? checkScrollPosition($event) : null" (wheel)="settings.stopScrollPropagation ? checkScrollPropagation($event, scroller) : null" [class.pull-right]="settings.pullRight" [class.dropdown-menu-right]="settings.pullRight" [style.max-height]="settings.maxHeight" style="display: block; height: auto; overflow-y: auto" (keydown.tab)="focusItem(1, $event)" (keydown.shift.tab)="focusItem(-1, $event)"><div class="input-group search-container" *ngIf="settings.enableSearch"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span></div><input type="text" class="form-control" ssAutofocus [formControl]="filterControl" [placeholder]="texts.searchPlaceholder" class="form-control"><div class="input-group-append" *ngIf="filterControl.value.length>0"><button class="btn btn-default btn-secondary" type="button" (click)="clearSearch($event)"><i class="fa fa-times"></i></button></div></div><a role="menuitem" href="javascript:;" tabindex="-1" class="dropdown-item check-control check-control-check" *ngIf="settings.showCheckAll && !disabledSelection" (click)="checkAll()"><span style="width: 16px" [ngClass]="{\'glyphicon glyphicon-ok\': settings.checkedStyle !== \'fontawesome\',\'fa fa-check\': settings.checkedStyle === \'fontawesome\'}"></span> {{ texts.checkAll }} </a><a role="menuitem" href="javascript:;" tabindex="-1" class="dropdown-item check-control check-control-uncheck" *ngIf="settings.showUncheckAll && !disabledSelection" (click)="uncheckAll()"><span style="width: 16px" [ngClass]="{\'glyphicon glyphicon-remove\': settings.checkedStyle !== \'fontawesome\',\'fa fa-times\': settings.checkedStyle === \'fontawesome\'}"></span> {{ texts.uncheckAll }} </a><a *ngIf="settings.showCheckAll || settings.showUncheckAll" href="javascript:;" class="dropdown-divider divider"></a> <a *ngIf="!renderItems" href="javascript:;" class="dropdown-item empty">{{ texts.searchNoRenderText }}</a> <a *ngIf="renderItems && !renderFilteredOptions.length" href="javascript:;" class="dropdown-item empty">{{ texts.searchEmptyResult }}</a> <a class="dropdown-item" href="javascript:;" *ngFor="let option of renderFilteredOptions; trackBy: trackById" [class.active]="isSelected(option)" [ngStyle]="getItemStyle(option)" [ngClass]="option.classes" [class.dropdown-header]="option.isLabel" [ssAutofocus]="option !== focusedItem" tabindex="-1" (click)="setSelected($event, option)" (keydown.space)="setSelected($event, option)" (keydown.enter)="setSelected($event, option)"><span *ngIf="!option.isLabel; else label" role="menuitem" tabindex="-1" [style.padding-left]="this.parents.length>0&&this.parents.indexOf(option.id)<0&&\'30px\'" [ngStyle]="getItemStyleSelectionDisabled()"><ng-container [ngSwitch]="settings.checkedStyle"><input *ngSwitchCase="\'checkboxes\'" type="checkbox" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event, option)" [disabled]="isCheckboxDisabled(option)" [ngStyle]="getItemStyleSelectionDisabled()" > <span *ngSwitchCase="\'glyphicon\'" style="width: 16px" class="glyphicon" [class.glyphicon-ok]="isSelected(option)" [class.glyphicon-lock]="isCheckboxDisabled(option)"></span> <span *ngSwitchCase="\'fontawesome\'" style="width: 16px;display: inline-block"><i *ngIf="isSelected(option)" class="fa fa-check" aria-hidden="true"></i> <i *ngIf="isCheckboxDisabled(option)" class="fa fa-lock" aria-hidden="true"></i> </span><span *ngSwitchCase="\'visual\'" style="display:block;float:left; border-radius: 0.2em; border: 0.1em solid rgba(44, 44, 44, 0.63);background:rgba(0, 0, 0, 0.1);width: 5.5em"><div class="slider" [ngClass]="{\'slideron\': isSelected(option)}"><img *ngIf="option.image != null" [src]="option.image" style="height: 100%; width: 100%; object-fit: contain"><div *ngIf="option.image == null" style="height: 100%; width: 100%;text-align: center; display: table; background-color:rgba(0, 0, 0, 0.74)"><div class="content_wrapper"><span style="font-size:3em;color:white" class="glyphicon glyphicon-eye-close"></span></div></div></div></span></ng-container><span [ngClass]="{\'chunkyrow\': settings.checkedStyle == \'visual\' }" [class.disabled]="isCheckboxDisabled(option)" [ngClass]="settings.itemClasses" [style.font-weight]="this.parents.indexOf(option.id)>=0?\'bold\':\'normal\'">{{ option.name }}</span></span><ng-template #label><span [class.disabled]="isCheckboxDisabled()">{{ option.name }}</span></ng-template></a></div></div>',
+                styles: ['a {  outline: none !important;}.dropdown-inline {  display: inline-block;}.dropdown-toggle .caret {  margin-left: 4px;  white-space: nowrap;  display: inline-block;}.chunkydropdown-menu {  min-width: 20em;}.chunkyrow {  line-height: 2;  margin-left: 1em;  font-size: 2em;}.slider {  width:3.8em;  height:3.8em;  display:block;  -webkit-transition: all 0.125s linear;  -moz-transition: all 0.125s linear;  -o-transition: all 0.125s linear;  transition: all 0.125s linear;  margin-left: 0.125em;  margin-top: auto;}.slideron {  margin-left: 1.35em;}.content_wrapper{  display: table-cell;  vertical-align: middle;}.search-container {  padding: 0px 5px 5px 5px;}'],
+                providers: [MULTISELECT_VALUE_ACCESSOR, __WEBPACK_IMPORTED_MODULE_5__search_filter_pipe__["a" /* MultiSelectSearchFilter */]],
+                changeDetection: __WEBPACK_IMPORTED_MODULE_2__angular_core__["_12" /* ChangeDetectionStrategy */].OnPush
             },] },
 ];
 /** @nocollapse */
-MultiselectDropdown.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* ElementRef */], },
-    { type: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* FormBuilder */], },
-    { type: __WEBPACK_IMPORTED_MODULE_4__search_filter_pipe__["a" /* MultiSelectSearchFilter */], },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["N" /* IterableDiffers */], },
+MultiselectDropdownComponent.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["n" /* ElementRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* FormBuilder */], },
+    { type: __WEBPACK_IMPORTED_MODULE_5__search_filter_pipe__["a" /* MultiSelectSearchFilter */], },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["N" /* IterableDiffers */], },
+    { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["r" /* ChangeDetectorRef */], },
 ]; };
-MultiselectDropdown.propDecorators = {
-    'options': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Input */] },],
-    'settings': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Input */] },],
-    'texts': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Input */] },],
-    'disabled': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Input */] },],
-    'disabledSelection': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Input */] },],
-    'selectionLimitReached': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'dropdownClosed': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'dropdownOpened': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'onAdded': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'onRemoved': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'onLazyLoad': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'onFilter': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Output */] },],
-    'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["p" /* HostListener */], args: ['document: click', ['$event.target'],] },],
+MultiselectDropdownComponent.propDecorators = {
+    'options': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Input */] },],
+    'settings': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Input */] },],
+    'texts': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Input */] },],
+    'disabled': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Input */] },],
+    'disabledSelection': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Input */] },],
+    'selectionLimitReached': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'dropdownClosed': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'dropdownOpened': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'onAdded': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'onRemoved': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'onLazyLoad': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'onFilter': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["w" /* Output */] },],
+    'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["p" /* HostListener */], args: ['document: click', ['$event.target'],] }, { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["p" /* HostListener */], args: ['document: touchstart', ['$event.target'],] },],
 };
 //# sourceMappingURL=dropdown.component.js.map
 
@@ -914,12 +1163,14 @@ MultiselectDropdown.propDecorators = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dropdown_component__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/dropdown.component.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__search_filter_pipe__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/search-filter.pipe.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__autofocus_directive__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/autofocus.directive.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dropdown_component__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/dropdown.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__search_filter_pipe__ = __webpack_require__("../../../../angular-2-dropdown-multiselect/dropdown/search-filter.pipe.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MultiselectDropdownModule; });
+
 
 
 
@@ -932,10 +1183,17 @@ var MultiselectDropdownModule = (function () {
 }());
 
 MultiselectDropdownModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_3__angular_core__["b" /* NgModule */], args: [{
-                imports: [__WEBPACK_IMPORTED_MODULE_2__angular_common__["k" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* ReactiveFormsModule */]],
-                exports: [__WEBPACK_IMPORTED_MODULE_0__dropdown_component__["a" /* MultiselectDropdown */], __WEBPACK_IMPORTED_MODULE_1__search_filter_pipe__["a" /* MultiSelectSearchFilter */]],
-                declarations: [__WEBPACK_IMPORTED_MODULE_0__dropdown_component__["a" /* MultiselectDropdown */], __WEBPACK_IMPORTED_MODULE_1__search_filter_pipe__["a" /* MultiSelectSearchFilter */]],
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */], args: [{
+                imports: [__WEBPACK_IMPORTED_MODULE_0__angular_common__["k" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* ReactiveFormsModule */]],
+                exports: [
+                    __WEBPACK_IMPORTED_MODULE_4__dropdown_component__["a" /* MultiselectDropdownComponent */],
+                    __WEBPACK_IMPORTED_MODULE_5__search_filter_pipe__["a" /* MultiSelectSearchFilter */],
+                ],
+                declarations: [
+                    __WEBPACK_IMPORTED_MODULE_4__dropdown_component__["a" /* MultiselectDropdownComponent */],
+                    __WEBPACK_IMPORTED_MODULE_5__search_filter_pipe__["a" /* MultiSelectSearchFilter */],
+                    __WEBPACK_IMPORTED_MODULE_3__autofocus_directive__["a" /* AutofocusDirective */],
+                ],
             },] },
 ];
 /** @nocollapse */
@@ -955,68 +1213,89 @@ var MultiSelectSearchFilter = (function () {
     function MultiSelectSearchFilter() {
         this._searchCache = {};
         this._searchCacheInclusive = {};
+        this._prevSkippedItems = {};
     }
     MultiSelectSearchFilter.prototype.transform = function (options, str, limit, renderLimit) {
+        if (str === void 0) { str = ''; }
         if (limit === void 0) { limit = 0; }
         if (renderLimit === void 0) { renderLimit = 0; }
-        str = (str || '').toLowerCase();
+        str = str.toLowerCase();
         // Drop cache because options were updated
         if (options !== this._lastOptions) {
             this._lastOptions = options;
             this._searchCache = {};
             this._searchCacheInclusive = {};
+            this._prevSkippedItems = {};
         }
+        var filteredOpts = this._searchCache.hasOwnProperty(str)
+            ? this._searchCache[str]
+            : this._doSearch(options, str, limit);
         var isUnderLimit = options.length <= limit;
-        if (this._searchCache[str]) {
-            return isUnderLimit ? this._searchCache[str] : this._limitRenderedItems(this._searchCache[str], renderLimit);
+        return isUnderLimit
+            ? filteredOpts
+            : this._limitRenderedItems(filteredOpts, renderLimit);
+    };
+    MultiSelectSearchFilter.prototype._getSubsetOptions = function (options, prevOptions, prevSearchStr) {
+        var prevInclusiveOrIdx = this._searchCacheInclusive[prevSearchStr];
+        if (prevInclusiveOrIdx === true) {
+            // If have previous results and it was inclusive, do only subsearch
+            return prevOptions;
         }
+        else if (typeof prevInclusiveOrIdx === 'number') {
+            // Or reuse prev results with unchecked ones
+            return prevOptions.concat(options.slice(prevInclusiveOrIdx));
+        }
+        return options;
+    };
+    MultiSelectSearchFilter.prototype._doSearch = function (options, str, limit) {
         var prevStr = str.slice(0, -1);
         var prevResults = this._searchCache[prevStr];
+        var prevResultShift = this._prevSkippedItems[prevStr] || 0;
         if (prevResults) {
-            var prevInclusiveOrIdx = this._searchCacheInclusive[prevStr];
-            if (prevInclusiveOrIdx === true) {
-                // If have previous results and it was inclusive, do only subsearch
-                options = prevResults;
-            }
-            else if (typeof prevInclusiveOrIdx === 'number') {
-                // Or reuse prev results with unchecked ones
-                options = prevResults.concat(options.slice(prevInclusiveOrIdx));
-            }
+            options = this._getSubsetOptions(options, prevResults, prevStr);
         }
         var optsLength = options.length;
         var maxFound = limit > 0 ? Math.min(limit, optsLength) : optsLength;
-        var filteredOpts = [];
         var regexp = new RegExp(this._escapeRegExp(str), 'i');
-        var matchPredicate = function (option) { return regexp.test(option.name); }, getChildren = function (option) { return options.filter(function (child) { return child.parentId === option.id; }); }, getParent = function (option) { return options.find(function (parent) { return option.parentId === parent.id; }); };
-        var i = 0, founded = 0;
+        var filteredOpts = [];
+        var i = 0, founded = 0, removedFromPrevResult = 0;
+        var doesOptionMatch = function (option) { return regexp.test(option.name); };
+        var getChildren = function (option) {
+            return options.filter(function (child) { return child.parentId === option.id; });
+        };
+        var getParent = function (option) {
+            return options.find(function (parent) { return option.parentId === parent.id; });
+        };
+        var foundFn = function (item) { filteredOpts.push(item); founded++; };
+        var notFoundFn = prevResults ? function () { return removedFromPrevResult++; } : function () { };
         for (; i < optsLength && founded < maxFound; ++i) {
             var option = options[i];
-            var directMatch = regexp.test(option.name);
+            var directMatch = doesOptionMatch(option);
             if (directMatch) {
-                filteredOpts.push(option);
-                founded++;
+                foundFn(option);
                 continue;
             }
-            if (typeof (option.parentId) === 'undefined') {
-                var childrenMatch = getChildren(option).some(matchPredicate);
+            if (typeof option.parentId === 'undefined') {
+                var childrenMatch = getChildren(option).some(doesOptionMatch);
                 if (childrenMatch) {
-                    filteredOpts.push(option);
-                    founded++;
+                    foundFn(option);
                     continue;
                 }
             }
-            if (typeof (option.parentId) !== 'undefined') {
-                var parentMatch = matchPredicate(getParent(option));
+            if (typeof option.parentId !== 'undefined') {
+                var parentMatch = doesOptionMatch(getParent(option));
                 if (parentMatch) {
-                    filteredOpts.push(option);
-                    founded++;
+                    foundFn(option);
                     continue;
                 }
             }
+            notFoundFn();
         }
+        var totalIterations = i + prevResultShift;
         this._searchCache[str] = filteredOpts;
-        this._searchCacheInclusive[str] = i === optsLength || i + 1;
-        return isUnderLimit ? filteredOpts : this._limitRenderedItems(filteredOpts, renderLimit);
+        this._searchCacheInclusive[str] = i === optsLength || totalIterations;
+        this._prevSkippedItems[str] = removedFromPrevResult + prevResultShift;
+        return filteredOpts;
     };
     MultiSelectSearchFilter.prototype._limitRenderedItems = function (items, limit) {
         return items.length > limit && limit > 0 ? items.slice(0, limit) : items;

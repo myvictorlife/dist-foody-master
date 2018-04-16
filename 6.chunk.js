@@ -267,7 +267,7 @@ var StatusComponent = (function () {
     };
     StatusComponent.prototype.getDiscountValue = function (order) {
         order = JSON.parse(order.discount);
-        if (order.discount_type) {
+        if (order.discount_type && order.discount_type !== "null") {
             if (order.name.indexOf(order.value) > -1) {
                 return order.name;
             }

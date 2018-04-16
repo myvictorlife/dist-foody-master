@@ -288,10 +288,6 @@ var NgbPanel = (function () {
          *  If not provided, it will be auto-generated.
          */
         this.id = "ngb-panel-" + nextId++;
-        /**
-         * A flag telling if the panel is currently open
-         */
-        this.isOpen = false;
     }
     return NgbPanel;
 }());
@@ -316,6 +312,14 @@ NgbPanel.propDecorators = {
 var NgbAccordion = (function () {
     function NgbAccordion(config) {
         /**
+         * A map that stores each panel state
+         */
+        this._states = new Map();
+        /**
+         * A map that stores references to all panels
+         */
+        this._panelRefs = new Map();
+        /**
          * An array or comma separated strings of panel identifiers that should be opened
          */
         this.activeIds = [];
@@ -334,12 +338,13 @@ var NgbAccordion = (function () {
      * Programmatically toggle a panel with a given id.
      */
     NgbAccordion.prototype.toggle = function (panelId) {
-        var panel = this.panels.find(function (p) { return p.id === panelId; });
+        var panel = this._panelRefs.get(panelId);
         if (panel && !panel.disabled) {
+            var nextState = !this._states.get(panelId);
             var defaultPrevented_1 = false;
-            this.panelChange.emit({ panelId: panelId, nextState: !panel.isOpen, preventDefault: function () { defaultPrevented_1 = true; } });
+            this.panelChange.emit({ panelId: panelId, nextState: nextState, preventDefault: function () { defaultPrevented_1 = true; } });
             if (!defaultPrevented_1) {
-                panel.isOpen = !panel.isOpen;
+                this._states.set(panelId, nextState);
                 if (this.closeOtherPanels) {
                     this._closeOthers(panelId);
                 }
@@ -348,28 +353,42 @@ var NgbAccordion = (function () {
         }
     };
     NgbAccordion.prototype.ngAfterContentChecked = function () {
-        var _this = this;
         // active id updates
         if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util_util__["h" /* isString */])(this.activeIds)) {
             this.activeIds = this.activeIds.split(/\s*,\s*/);
         }
-        // update panels open states
-        this.panels.forEach(function (panel) { return panel.isOpen = !panel.disabled && _this.activeIds.indexOf(panel.id) > -1; });
+        this._updateStates();
         // closeOthers updates
         if (this.activeIds.length > 1 && this.closeOtherPanels) {
             this._closeOthers(this.activeIds[0]);
             this._updateActiveIds();
         }
     };
+    /**
+     * @internal
+     */
+    NgbAccordion.prototype.isOpen = function (panelId) { return this._states.get(panelId); };
     NgbAccordion.prototype._closeOthers = function (panelId) {
-        this.panels.forEach(function (panel) {
-            if (panel.id !== panelId) {
-                panel.isOpen = false;
+        var _this = this;
+        this._states.forEach(function (state, id) {
+            if (id !== panelId) {
+                _this._states.set(id, false);
             }
         });
     };
     NgbAccordion.prototype._updateActiveIds = function () {
-        this.activeIds = this.panels.filter(function (panel) { return panel.isOpen && !panel.disabled; }).map(function (panel) { return panel.id; });
+        var _this = this;
+        this.activeIds =
+            this.panels.toArray().filter(function (panel) { return _this.isOpen(panel.id) && !panel.disabled; }).map(function (panel) { return panel.id; });
+    };
+    NgbAccordion.prototype._updateStates = function () {
+        var _this = this;
+        this._states.clear();
+        this._panelRefs.clear();
+        this.panels.toArray().forEach(function (panel) {
+            _this._states.set(panel.id, _this.activeIds.indexOf(panel.id) > -1 && !panel.disabled);
+            _this._panelRefs.set(panel.id, panel);
+        });
     };
     return NgbAccordion;
 }());
@@ -379,7 +398,7 @@ NgbAccordion.decorators = [
                 selector: 'ngb-accordion',
                 exportAs: 'ngbAccordion',
                 host: { 'role': 'tablist', '[attr.aria-multiselectable]': '!closeOtherPanels' },
-                template: "\n    <ng-template ngFor let-panel [ngForOf]=\"panels\">\n      <div class=\"card\">\n        <div role=\"tab\" id=\"{{panel.id}}-header\"\n          [class]=\"'card-header ' + (panel.type ? 'card-'+panel.type: type ? 'card-'+type : '')\" [class.active]=\"panel.isOpen\">\n          <a href (click)=\"!!toggle(panel.id)\" [class.text-muted]=\"panel.disabled\" [attr.tabindex]=\"(panel.disabled ? '-1' : null)\"\n            [attr.aria-expanded]=\"panel.isOpen\" [attr.aria-controls]=\"(panel.isOpen ? panel.id : null)\"\n            [attr.aria-disabled]=\"panel.disabled\">\n            {{panel.title}}<ng-template [ngTemplateOutlet]=\"panel.titleTpl?.templateRef\"></ng-template>\n          </a>\n        </div>\n        <div id=\"{{panel.id}}\" role=\"tabpanel\" [attr.aria-labelledby]=\"panel.id + '-header'\" \n             class=\"card-body {{panel.isOpen ? 'show' : null}}\" *ngIf=\"!destroyOnHide || panel.isOpen\">\n             <ng-template [ngTemplateOutlet]=\"panel.contentTpl.templateRef\"></ng-template>\n        </div>\n      </div>\n    </ng-template>\n  "
+                template: "\n    <ng-template ngFor let-panel [ngForOf]=\"panels\">\n      <div class=\"card\">\n        <div role=\"tab\" id=\"{{panel.id}}-header\"\n          [class]=\"'card-header ' + (panel.type ? 'card-'+panel.type: type ? 'card-'+type : '')\" [class.active]=\"isOpen(panel.id)\">\n          <a href (click)=\"!!toggle(panel.id)\" [class.text-muted]=\"panel.disabled\" [attr.tabindex]=\"(panel.disabled ? '-1' : null)\"\n            [attr.aria-expanded]=\"isOpen(panel.id)\" [attr.aria-controls]=\"(isOpen(panel.id) ? panel.id : null)\"\n            [attr.aria-disabled]=\"panel.disabled\">\n            {{panel.title}}<ng-template [ngTemplateOutlet]=\"panel.titleTpl?.templateRef\"></ng-template>\n          </a>\n        </div>\n        <div id=\"{{panel.id}}\" role=\"tabpanel\" [attr.aria-labelledby]=\"panel.id + '-header'\" \n             class=\"card-body {{isOpen(panel.id) ? 'show' : null}}\" *ngIf=\"!destroyOnHide || isOpen(panel.id)\">\n             <ng-template [ngTemplateOutlet]=\"panel.contentTpl.templateRef\"></ng-template>\n        </div>\n      </div>\n    </ng-template>\n  "
             },] },
 ];
 /** @nocollapse */
@@ -3415,8 +3434,12 @@ var ModalDismissReasons;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_popup__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/util/popup.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbActiveModal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgbModalRef; });
+
+
 /**
  * A reference to an active (currently opened) modal. Instances of this class
  * can be injected into components passed as modal content.
@@ -3435,6 +3458,11 @@ var NgbActiveModal = (function () {
     return NgbActiveModal;
 }());
 
+NgbActiveModal.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */] },
+];
+/** @nocollapse */
+NgbActiveModal.ctorParameters = function () { return []; };
 /**
  * A reference to a newly opened modal.
  */
@@ -3506,6 +3534,16 @@ var NgbModalRef = (function () {
     return NgbModalRef;
 }());
 
+NgbModalRef.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */] },
+];
+/** @nocollapse */
+NgbModalRef.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ComponentRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_1__util_popup__["b" /* ContentRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ComponentRef */], },
+    { type: Function, },
+]; };
 //# sourceMappingURL=modal-ref.js.map
 
 /***/ }),
